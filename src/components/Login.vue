@@ -221,6 +221,7 @@
                         }
                     },function (response) {
                         console.log(response.data.message);
+                        this.loading = false;
                     });
                 }
             },
