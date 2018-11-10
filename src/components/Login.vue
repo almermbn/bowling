@@ -1,117 +1,123 @@
 <template>
+
 <div id="wrapper">
-{{loggedIn}}
     <!-- LOGIN -->
-    <section class="hero is-fullheight" v-show="isLogin">
-        <div class="hero-body">
-            <div class="container has-text-centered">
-                <div class="column is-4 is-offset-4">
-                    <h3 class="title has-text-grey">Login</h3>
-                    <p class="subtitle has-text-grey">Efetue seu login para continuar.</p>
-                    <div class="box">
-                        <figure class="avatar">
-                            <img src="./../assets/logo.png">
-                        </figure>
-                        <form>
-                            <div class="field">
-                                <div class="control">
-                                    <b-input placeholder="Usuário"
-                                        type="text"
-                                        icon-pack="fas"
-                                        icon="user"
-                                        size="is-large"
-                                        ref="login" 
-                                        v-model="login">
-                                    </b-input>
+    <transition :name="transitionLogin">
+        <section class="hero is-fullheight animated" :class="transitionLogin" v-show="isLogin">
+            <div class="hero-body">
+                <div class="container has-text-centered">
+                    <div class="column is-4 is-offset-4">
+                        <h3 class="title has-text-grey">Login</h3>
+                        <p class="subtitle has-text-grey">Efetue seu login e senha para continuar.</p>
+                        <div class="box">
+                            <figure class="avatar">
+                                <img src="./../assets/logo.png">
+                            </figure>
+                            <form>
+                                <div class="field">
+                                    <div class="control">
+                                        <b-input placeholder="Usuário"
+                                            type="text"
+                                            icon-pack="fas"
+                                            icon="user"
+                                            size="is-large"
+                                            ref="login" 
+                                            v-model="login">
+                                        </b-input>
+                                    </div>
                                 </div>
-                            </div>
 
-                            <div class="field">
-                                <div class="control">
-                                    <b-input placeholder="Senha"
-                                        type="password"
-                                        icon-pack="fas"
-                                        icon="key"
-                                        size="is-large"
-                                        ref="pwd" 
-                                        v-model="pwd">
-                                    </b-input>
+                                <div class="field">
+                                    <div class="control">
+                                        <b-input placeholder="Senha"
+                                            type="password"
+                                            icon-pack="fas"
+                                            icon="key"
+                                            size="is-large"
+                                            ref="pwd" 
+                                            v-model="pwd"
+                                            password-reveal>
+                                        </b-input>
+                                    </div>
                                 </div>
-                            </div>
 
-                            <button class="button is-block is-info is-large is-fullwidth" @click="doLogin">
-                                <b-icon
-                                    pack="fas"
-                                    icon="sync-alt"
-                                    custom-class="fa-spin" 
-                                    v-show="loading">
-                                </b-icon>
-                                <span v-show="!loading">Login</span>
-                            </button>
-                        </form>
+                                <button class="button is-block is-dark is-large is-fullwidth" @click="doLogin">
+                                    <b-icon
+                                        pack="fas"
+                                        icon="sync-alt"
+                                        custom-class="fa-spin" 
+                                        v-show="loading">
+                                    </b-icon>
+                                    <span v-show="!loading">Login</span>
+                                </button>
+                            </form>
+                        </div>
+                        <p class="button is-text">
+                            <a @click="toggleRegister">Cadastrar</a>
+                        </p>
                     </div>
-                    <p class="has-text-grey">
-                        <a @click="toggleRegister">Cadastrar</a>
-                    </p>
                 </div>
             </div>
-        </div>
-    </section>
-
+        </section>
+    </transition>
+    
     <!-- CADASTRO -->
-    <section class="hero is-fullheight" v-show="!isLogin">
-        <div class="hero-body">
-            <div class="container has-text-centered">
-                <div class="column is-4 is-offset-4">
-                    <h3 class="title has-text-grey">Cadastrar</h3>
-                    <p class="subtitle has-text-grey">Informe seus dados para o cadastro.</p>
-                    <div class="box">
-                        <figure class="avatar">
-                            <img src="./../assets/logo.png">
-                        </figure>
-                        <form>
-                            <div class="field">
-                                <div class="control">
-                                    <b-input placeholder="Usuário"
-                                        type="text"
-                                        icon-pack="fas"
-                                        icon="user"
-                                        size="is-large"
-                                        ref="userRegister" 
-                                        v-model="userRegister">
-                                    </b-input>
+    <transition :name="transitionRegister">
+        <section class="hero is-fullheight animated" :class="transitionRegister" v-show="!isLogin" >
+            <div class="hero-body">
+                <div class="container has-text-centered">
+                    <div class="column is-4 is-offset-4">
+                        <h3 class="title has-text-grey">Cadastrar</h3>
+                        <p class="subtitle has-text-grey">Informe seus dados para o cadastro.</p>
+                        <div class="box">
+                            <figure class="avatar">
+                                <img src="./../assets/logo.png">
+                            </figure>
+                            <form>
+                                <div class="field">
+                                    <div class="control">
+                                        <b-input placeholder="Usuário"
+                                            type="text"
+                                            icon-pack="fas"
+                                            icon="user"
+                                            size="is-large"
+                                            ref="userRegister" 
+                                            v-model="userRegister">
+                                        </b-input>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="field">
-                                <div class="control">
-                                    <b-input placeholder="Senha"
-                                        type="password"
-                                        icon-pack="fas"
-                                        icon="key"
-                                        size="is-large"
-                                        ref="userPwd" 
-                                        v-model="userPwd">
-                                    </b-input>
+                                <div class="field">
+                                    <div class="control">
+                                        <b-input placeholder="Senha"
+                                            type="password"
+                                            icon-pack="fas"
+                                            icon="key"
+                                            size="is-large"
+                                            ref="userPwd"
+                                            v-model="userPwd"
+                                            password-reveal>
+                                        </b-input>
+                                    </div>
                                 </div>
-                            </div>
-                            <button class="button is-block is-info is-large is-fullwidth" @click="doRegister">
-                                <b-icon
-                                    pack="fas"
-                                    icon="sync-alt"
-                                    custom-class="fa-spin" 
-                                    v-show="loading">
-                                </b-icon>
-                                <span v-show="!loading">Cadastrar</span>
-                            </button>
-                        </form>
+                                <button class="button is-block is-info is-large is-fullwidth" @click="doRegister">
+                                    <b-icon
+                                        pack="fas"
+                                        icon="sync-alt"
+                                        custom-class="fa-spin" 
+                                        v-show="loading">
+                                    </b-icon>
+                                    <span v-show="!loading">Cadastrar</span>
+                                </button>
+                            </form>
+                        </div>
+                        <p class="button is-text">
+                            <a @click="toggleRegister">Voltar</a>
+                        </p>
                     </div>
-                    <p class="has-text-grey">
-                        <a @click="toggleRegister">Voltar</a>
-                    </p>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
+    </transition>
 </div>
 </template>
 
@@ -126,7 +132,9 @@
                 userRegister: '',
                 userPwd: '',
                 loggedIn: false,
-                loading: false
+                loading: false,
+                transitionLogin: 'flipInY',
+                transitionRegister: 'flipOutY'
             }
         },
         mounted(){
@@ -134,7 +142,21 @@
         },
         methods: {
             toggleRegister(){
+                var vm = this;
+
                 this.isLogin = !this.isLogin;
+                if(this.isLogin){
+                    this.transitionRegister = 'flipOutY';
+                    setTimeout(function() {
+                        vm.transitionLogin = 'flipInY';
+                    }, 700);
+                } else {
+                    this.transitionLogin = 'flipOutY';
+                    setTimeout(function() {
+                        vm.transitionRegister = 'flipInY';
+                    }, 700);
+                }
+                
             },
             doLogin(){
                 
@@ -157,7 +179,7 @@
                             this.success(result.message);
                             this.loggedIn = true;
 
-                            this.$router.replace('Home');
+                            this.$router.push('/home');
                         } else {
                             this.danger(result.message);
                             this.loading = false;
@@ -270,7 +292,7 @@
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped>
+<style scoped lang="scss">
     h1, h2 {
         font-weight: normal;
     }
@@ -288,5 +310,11 @@
     figure img {
         width: 40%;
         height: 40%;
+    }
+    .box {
+        background-image: -webkit-gradient(linear, 0 100%, 0 0, from(orange), to(gold));
+    }
+    .input:focus {
+        border-color: #167df0 !important;
     }
 </style>

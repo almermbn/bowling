@@ -5,13 +5,15 @@ import App from './App'
 import router from './router'
 
 import Buefy from 'buefy'
-import 'buefy/dist/buefy.css'
 import VueResource from "vue-resource"
+import HighchartsVue from 'highcharts-vue'
 
 Vue.use(Buefy)
 Vue.use(VueResource)
+Vue.use(HighchartsVue)
 
 Vue.config.productionTip = false
+
 
 /* eslint-disable no-new */
 new Vue({

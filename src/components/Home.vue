@@ -1,7 +1,5 @@
 <template>
 <div id="wrapper">
-teste
-    <!-- LOGIN -->
     <section class="hero is-fullheight">
         <div class="hero-body">
             <div class="container has-text-centered">
@@ -9,14 +7,38 @@ teste
                     <h3 class="title has-text-grey">Menu</h3>
                     <div class="box">
                         <form>
-                            <button class="button is-block is-info is-large is-fullwidth" @click="doLogin">Registrar partida</button>
-                            <button class="button is-block is-info is-large is-fullwidth" @click="doLogin">Grafico de jogos</button>
-                            <button class="button is-block is-info is-large is-fullwidth" @click="doLogin">Sair</button>
+                        <a class="button is-large is-fullwidth" @click="goTo('/registerMatch')">
+                            <span class="icon">
+                                <i class="fas fa-bowling-ball"></i>
+                            </span>
+                            <span>Registrar partida</span>
+                        </a>
+                        <a class="button is-large is-fullwidth" @click="goTo('/statistics')">
+                            <span class="icon">
+                                <i class="fas fa-chart-line"></i>
+                            </span>
+                            <span>Estatísticas</span>
+                        </a>
+                        <a class="button is-large is-fullwidth" @click="goTo('/oils')">
+                            <span class="icon">
+                                <i class="fas fa-oil-can"></i>
+                            </span>
+                            <span>Padrões de óleo</span>
+                        </a>
+                        <a class="button is-large is-fullwidth" @click="goTo('/playingArea')">
+                            <span class="icon">
+                                <i class="fas fa-calculator"></i>
+                            </span>
+                            <span>Estimar Lançamento</span>
+                        </a>
+                        <a class="button is-large is-fullwidth" @click="leave">
+                            <span class="icon">
+                                <i class="fas fa-power-off"></i>
+                            </span>
+                            <span>Sair</span>
+                        </a>
                         </form>
                     </div>
-                    <p class="has-text-grey">
-                        <a @click="toggleRegister">Cadastrar</a>
-                    </p>
                 </div>
             </div>
         </div>
@@ -29,16 +51,8 @@ teste
         name: 'Home',
         data () {
             return {
-                login: '',
-                pwd: '',
-                isLogin: true,
-                userRegister: '',
-                userPwd: '',
-                loggedIn: false
+                credentials: '',
             }
-        },
-        mounted(){
-            alert('')
         },
         methods: {
             danger(_msg) {
@@ -55,20 +69,17 @@ teste
                     type: 'is-success'
                 })
             },
-            checkExistentUser(){
-                var user = localStorage.getItem('userLogin');
-                if(user){
-                    var obj = JSON.parse(user);
-                    this.login = obj.user;
-                    this.pwd = obj.pwd;
-                    this.doLogin();
-                }
+            goTo(_route){
+                this.$router.push(_route);
+            },
+            leave(){
+                localStorage.setItem('userLogin', '');
+                this.goTo('/');
             }
         }
     }
 </script>
 
-<!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
     h1, h2 {
         font-weight: normal;
@@ -81,7 +92,7 @@ teste
         display: inline-block;
         margin: 0 10px;
     }
-    a {
-        color: #42b983;
+    .box {
+        background-image: -webkit-gradient(linear, 0 100%, 0 0, from(orange), to(gold));
     }
 </style>
