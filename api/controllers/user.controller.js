@@ -66,3 +66,6 @@ exports.login_user = function(req, res) {
         res.json( userResponse );
     });
 };
+exports.test = function(req, res) {
+    res.json( [] );
+};
