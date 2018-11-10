@@ -70,7 +70,6 @@
 
             var user = localStorage.getItem('userLogin');
             if(!user){
-                this.danger('Houve um problema ao recuperar os dados do usuário. Efetue o login novamente.');
                 this.$router.replace('/');
             } else {
                 var obj = JSON.parse(user);
@@ -82,6 +81,14 @@
                 this.backDisabled = (_val == '/home' || _val == '/');
                 this.showBottomNavBar = _val != '/';
                 this.$route.path == '/statistics' ? this.showDeleteStatistics = true : this.showDeleteStatistics = false;
+                var user = localStorage.getItem('userLogin');
+                if(!user && _val != '/'){
+                    this.danger('Houve um problema ao recuperar os dados do usuário. Efetue o login novamente.');
+                    this.$router.replace('/');
+                } else {
+                    var obj = JSON.parse(user);
+                    this.credentials = obj;
+                }
             }
         },
         methods: {
@@ -107,9 +114,12 @@
                     title: 'Apagar estatísticas do jogador ?',
                     message: 'Deseja <b>apagar</b> as <b>estatísticas</b> ? Esta ação <b>não</b> poderá ser desfeita.',
                     confirmText: 'Apagar',
-                    cancelText: 'Cancelar',
                     type: 'is-danger',
                     hasIcon: true,
+                    icon: 'times-circle',
+                    iconPack: 'fas',
+
+                    cancelText: 'Cancelar',
                     onConfirm: () => this.$toast.open('Dados apagados com sucesso!')
                 })
             }

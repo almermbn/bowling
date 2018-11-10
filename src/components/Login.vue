@@ -99,7 +99,7 @@
                                         </b-input>
                                     </div>
                                 </div>
-                                <button class="button is-block is-info is-large is-fullwidth" @click="doRegister">
+                                <button class="button is-block is-dark is-large is-fullwidth" @click="doRegister">
                                     <b-icon
                                         pack="fas"
                                         icon="sync-alt"
