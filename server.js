@@ -2,12 +2,13 @@ var express = require('express'),
 app = express(),
 port = process.env.PORT || 3000,
 mongoose = require('mongoose'),
-User = require('./api/models/user.model'),
+user = require('./api/models/user.model'),
+match = require('./api/models/match.model'),
 bodyParser = require('body-parser');
 
 mongoose.Promise = global.Promise;
-//mongoose.connect('mongodb://localhost:27017/bowling',  { useNewUrlParser: true });
-mongoose.connect('mongodb://bowlingAdmin:45Wb6VM!@ds157923.mlab.com:57923/heroku_r1pgdkc9',  { useNewUrlParser: true });
+mongoose.connect('mongodb://localhost:27017/bowling',  { useNewUrlParser: true });
+//mongoose.connect('mongodb://bowlingAdmin:45Wb6VM!@ds157923.mlab.com:57923/heroku_r1pgdkc9',  { useNewUrlParser: true });
 
 const db = mongoose.connection;
 
@@ -26,9 +27,13 @@ app.use((req, res, next) => {
 		);
 	next();
 });
+
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 var routes = require('./api/routes/user.routes');
+var matchRoutes = require('./api/routes/match.routes');
 routes(app);
+matchRoutes(app);
+
 app.listen(port);
 console.log('Server started on: ' + port);

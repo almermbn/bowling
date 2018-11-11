@@ -2,13 +2,11 @@
 var mongoose = require('mongoose'),
 User = mongoose.model('User');
 
-
 exports.register_user = function(req, res) {
     var userDoc = {
         user : req.body.user,
         pwd : req.body.pwd,
     }
-
     
     var userModel = new User(userDoc);
 
@@ -65,7 +63,4 @@ exports.login_user = function(req, res) {
 
         res.json( userResponse );
     });
-};
-exports.test = function(req, res) {
-    res.json( [] );
 };

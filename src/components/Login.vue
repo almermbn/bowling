@@ -169,7 +169,7 @@
                         pwd: this.pwd
                     }
 
-                    this.$http.post('https://drbowling.herokuapp.com/api/login', credentials).then(response => {
+                    this.$http.post('api/login', credentials).then(response => {
                         var result = response.data;
 
                         if(result.saveOk){
@@ -202,7 +202,7 @@
                     }
                     this.loading = true;
 
-                    this.$http.post('https://drbowling.herokuapp.com/api/register', credentials).then(response => {
+                    this.$http.post('api/register', credentials).then(response => {
                         var result = response.data;
 
                         if(result.saveOk){
