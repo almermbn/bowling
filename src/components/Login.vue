@@ -156,7 +156,6 @@
                         vm.transitionRegister = 'flipInY';
                     }, 700);
                 }
-                
             },
             doLogin(){
                 
