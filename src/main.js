@@ -12,7 +12,8 @@ Vue.use(Buefy)
 Vue.use(VueResource)
 Vue.use(HighchartsVue)
 
-Vue.config.productionTip = false
+Vue.config.productionTip = false;
+Vue.prototype.$remoteUrl = "https://drbowling.herokuapp.com/";
 
 
 /* eslint-disable no-new */
