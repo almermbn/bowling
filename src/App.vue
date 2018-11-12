@@ -113,12 +113,11 @@
                 this.$dialog.confirm({
                     title: 'Apagar estatísticas do jogador ?',
                     message: 'Deseja <b>apagar</b> as <b>estatísticas</b> ? Esta ação <b>não</b> poderá ser desfeita.',
-                    confirmText: 'Apagar',
                     type: 'is-danger',
                     hasIcon: true,
                     icon: 'times-circle',
                     iconPack: 'fas',
-
+                    confirmText: 'Apagar',
                     cancelText: 'Cancelar',
                     onConfirm: () => this.$toast.open('Dados apagados com sucesso!')
                 })

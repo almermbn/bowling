@@ -7,36 +7,46 @@
                     <h3 class="title has-text-grey">Menu</h3>
                     <div class="box">
                         <form>
-                        <a class="button is-large is-fullwidth" @click="goTo('/registerMatch')">
-                            <span class="icon">
-                                <i class="fas fa-bowling-ball"></i>
-                            </span>
-                            <span>Registrar partida</span>
-                        </a>
-                        <a class="button is-large is-fullwidth" @click="goTo('/statistics')">
-                            <span class="icon">
-                                <i class="fas fa-chart-line"></i>
-                            </span>
-                            <span>Estatísticas</span>
-                        </a>
-                        <a class="button is-large is-fullwidth" @click="goTo('/oils')">
-                            <span class="icon">
-                                <i class="fas fa-oil-can"></i>
-                            </span>
-                            <span>Padrões de óleo</span>
-                        </a>
-                        <a class="button is-large is-fullwidth" @click="goTo('/playingArea')">
-                            <span class="icon">
-                                <i class="fas fa-calculator"></i>
-                            </span>
-                            <span>Estimar Lançamento</span>
-                        </a>
-                        <a class="button is-large is-fullwidth" @click="leave">
-                            <span class="icon">
-                                <i class="fas fa-power-off"></i>
-                            </span>
-                            <span>Sair</span>
-                        </a>
+                            <b-field>
+                                <a class="button is-large  is-fullwidth" @click="goTo('/registerMatch')">
+                                    <span class="icon">
+                                        <i class="fas fa-bowling-ball"></i>
+                                    </span>
+                                    <span>Registrar partida</span>
+                                </a>
+                            </b-field>
+                            <b-field>
+                                <a class="button is-large  is-fullwidth" @click="goTo('/statistics')">
+                                    <span class="icon">
+                                        <i class="fas fa-chart-line"></i>
+                                    </span>
+                                    <span>Estatísticas</span>
+                                </a>
+                            </b-field>
+                            <b-field>
+                                <a class="button is-large  is-fullwidth" @click="goTo('/oils')">
+                                    <span class="icon">
+                                        <i class="fas fa-oil-can"></i>
+                                    </span>
+                                    <span>Padrões de óleo</span>
+                                </a>
+                            </b-field>
+                            <b-field>
+                                <a class="button is-large  is-fullwidth" @click="goTo('/playingArea')">
+                                    <span class="icon">
+                                        <i class="fas fa-calculator"></i>
+                                    </span>
+                                    <span>Estimar Lançamento</span>
+                                </a>
+                            </b-field>
+                            <b-field>
+                                <a class="button is-large  is-fullwidth" @click="leave">
+                                    <span class="icon">
+                                        <i class="fas fa-power-off"></i>
+                                    </span>
+                                    <span>Sair</span>
+                                </a>
+                            </b-field>
                         </form>
                     </div>
                 </div>

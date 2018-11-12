@@ -64,3 +64,23 @@ exports.login_user = function(req, res) {
         res.json( userResponse );
     });
 };
+
+exports.register_match = function(req, res) {
+
+    var user = req.body.user;
+    delete req.body.user;
+
+    User.findOneAndUpdate({ user: user }, { $push: { matches: req.body } }, function (err, docs) {
+        if (err){
+            res.send(err);
+        }
+
+        var response = {
+            saveOk: true,
+            message: 'Partida salva!'
+        }
+
+        res.json( response );
+    });
+    
+};
