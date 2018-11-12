@@ -11,16 +11,16 @@
 
                         <b-field>
                             <p class="control">
-                                <button class="button is-dark" @click="confirmDialog(true)">Strike</button>
+                                <button class="button is-dark" @click="confirmDialog(true)" :disabled="matchComplete">Strike</button>
                             </p>                            
                             <p class="control">
-                                <b-input type="number" placeholder="5"  v-model="scoreOne"></b-input>
+                                <b-input type="number" placeholder="5"  v-model="scoreOne" :disabled="matchComplete"></b-input>
                             </p>
                             <p class="control">
-                                <b-input type="number" placeholder="5"  v-model="scoreTwo" :disabled="frameTable == 12 || tenSpare"></b-input>
+                                <b-input type="number" placeholder="5"  v-model="scoreTwo" :disabled="frameTable == 12 || tenSpare || matchComplete"></b-input>
                             </p>
                              <p class="control">
-                                <button class="button is-dark" @click="confirmDialog()">Ok</button>
+                                <button class="button is-dark" @click="confirmDialog()" :disabled="matchComplete">Ok</button>
                             </p>
 
                         </b-field>
