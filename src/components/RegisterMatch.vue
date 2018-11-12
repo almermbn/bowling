@@ -160,7 +160,7 @@
                     }
 
                     this.loading = true;
-                    this.$http.post($remoteUrl + 'api/registerMatch', match).then(response => {
+                    this.$http.post(this.$remoteUrl + 'api/registerMatch', match).then(response => {
                         var result = response.data;
 
                         if(result.saveOk){
