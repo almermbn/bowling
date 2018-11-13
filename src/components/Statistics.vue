@@ -6,17 +6,6 @@
                 <div class="column is-4 is-offset-4">
                     <h3 class="title has-text-grey">Estatísticas</h3>                    
                     <div class="box" v-if="chartMatchOptions.series.length">
-                    	<!-- <b-field>
-	                    	<b-select 
-	                    	placeholder="Select a character" 
-	                    	v-model="matchDay" 
-	                    	icon="calendar"
-	                    	icon-pack="fas" expanded>
-	                    		<option value="12/11/2018 12:00">12/11/2018 12:00</option>
-	                    		<option value="12/11/2018 10:30">12/11/2018 10:30</option>
-	                    		<option value="11/11/2018 13:00">11/11/2018 13:00</option>
-	                    	</b-select>
-	                    </b-field> -->
                         <highcharts :options="chartMatchOptions" :updateArgs="matchArgs"></highcharts>
                     </div>
 
@@ -104,7 +93,6 @@
             stopLoading(){
                 this.loadingComponent.close();
             },
-
             async getMatches(){
                 
                 var vm = this;
@@ -114,7 +102,7 @@
                     
                     var credentials = JSON.parse(userStore);
 
-                    return this.$http.post(this.$remoteUrl + 'api/getMatches', credentials).then(response => {
+                    this.$http.post(this.$remoteUrl + 'api/getMatches', credentials).then(response => {
                             vm.stopLoading();
                             return response.data.object;
                     }, function (response) {

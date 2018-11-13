@@ -23,27 +23,30 @@
             <div class="navbar-end">
                 <div class="navbar-item navbar-center">
                     <div class="buttons">
+                        
+                        <button class="button" @click="back" :disabled="backDisabled">
+                            <b-icon
+                                pack="fas"
+                                icon="arrow-left">
+                            </b-icon>
+                            <span >Voltar</span>
+                        </button>
 
-                        <a class="button" @click="back" :disabled="backDisabled">
-                            <span class="icon">
-                                <i class="fas fa-arrow-left"></i>
-                            </span>
-                            <span>Voltar</span>
-                        </a>
+                        <button class="button is-danger" @click="confirmDeleteData" v-show="showDeleteStatistics">
+                            <b-icon
+                                pack="fas"
+                                icon="trash-alt">
+                            </b-icon>
+                            <span>Apagar Estatística</span>
+                        </button>
 
-                        <a class="button is-danger" @click="confirmDeleteData" v-show="showDeleteStatistics">
-                            <span class="icon">
-                                <i class="fas fa-trash-alt"></i>
-                            </span>
-                            <span>Apagar Estatísticas</span>
-                        </a>
-
-                        <a class="button is-danger" @click="leave">
-                            <span class="icon">
-                                <i class="fas fa-power-off"></i>
-                            </span>
+                        <button class="button is-danger" @click="leave">
+                            <b-icon
+                                pack="fas"
+                                icon="power-off">
+                            </b-icon>
                             <span>Sair</span>
-                        </a>
+                        </button>
                     </div>
                 </div>
             </div>
@@ -100,6 +103,14 @@
                     type: 'is-danger'
                 })
             },
+            success(_ms){
+                 this.$toast.open({
+                    duration: 3000,
+                    message: _msg,
+                    position: 'is-bottom',
+                    type: 'is-success'
+                });
+            },
             back(){
                 if(this.$route.path != '/home' && this.$route.path != '/'){
                     this.$router.go(-1);
@@ -108,6 +119,12 @@
             leave(){
                 localStorage.setItem('userLogin', '');
                 this.$router.replace('/');
+            },
+            loading(){
+                this.loadingComponent = this.$loading.open();
+            },
+            stopLoading(){
+                this.loadingComponent.close();
             },
             confirmDeleteData() {
                 this.$dialog.confirm({
@@ -119,7 +136,30 @@
                     iconPack: 'fas',
                     confirmText: 'Apagar',
                     cancelText: 'Cancelar',
-                    onConfirm: () => this.$toast.open('Dados apagados com sucesso!')
+                    onConfirm: () => {
+
+                        var userStore = localStorage.getItem('userLogin');
+                        if(userStore){
+                            this.loading();
+
+                            var credentials = JSON.parse(userStore);
+                            this.$http.post(this.$remoteUrl + 'api/deleteMatches', credentials).then(response => {
+                                var result = response.data;
+
+                                if(result.statusOk){
+                                    this.stopLoading();
+                                    this.success('Dados apagados com sucesso!');
+                                } 
+                            },function (response) {
+                                this.danger('Falha ao apagar dados.')
+                                this.stopLoading();
+                            });
+                        }
+                        
+
+
+                        
+                    }
                 })
             }
         }

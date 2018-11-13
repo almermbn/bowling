@@ -117,7 +117,7 @@ exports.delete_matches = function(req, res) {
         }
 
         var response = {
-            saveOk: true,
+            statusOk: true,
         }
 
         res.json( response );
