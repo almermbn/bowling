@@ -102,7 +102,7 @@
                     
                     var credentials = JSON.parse(userStore);
 
-                    this.$http.post(this.$remoteUrl + 'api/getMatches', credentials).then(response => {
+                    return this.$http.post(this.$remoteUrl + 'api/getMatches', credentials).then(response => {
                             vm.stopLoading();
                             return response.data.object;
                     }, function (response) {
