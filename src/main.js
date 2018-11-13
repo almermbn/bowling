@@ -13,7 +13,7 @@ Vue.use(VueResource)
 Vue.use(HighchartsVue)
 
 Vue.config.productionTip = false;
-Vue.prototype.$remoteUrl = "";
+Vue.prototype.$remoteUrl = "https://drbowling.herokuapp.com/";
 
 
 /* eslint-disable no-new */
