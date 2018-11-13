@@ -63,7 +63,7 @@
                 backDisabled: '',
                 showBottomNavBar: '',
                 showDeleteStatistics: '',
-                credentials: ''
+                credentials: '',
             }
         },
         mounted(){
@@ -144,21 +144,14 @@
 
                             var credentials = JSON.parse(userStore);
                             this.$http.post(this.$remoteUrl + 'api/deleteMatches', credentials).then(response => {
-                                var result = response.data;
-
-                                if(result.statusOk){
-                                    this.stopLoading();
-                                    this.success('Dados apagados com sucesso!');
-                                } 
+                                this.stopLoading();
+                                this.back();
+                                this.success('Dados apagados com sucesso!');
                             },function (response) {
                                 this.danger('Falha ao apagar dados.')
                                 this.stopLoading();
                             });
                         }
-                        
-
-
-                        
                     }
                 })
             }

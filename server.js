@@ -7,8 +7,8 @@ match = require('./api/models/match.model'),
 bodyParser = require('body-parser');
 
 mongoose.Promise = global.Promise;
-//mongoose.connect('mongodb://localhost:27017/bowling',  { useNewUrlParser: true });
-mongoose.connect('mongodb://bowlingAdmin:45Wb6VM!@ds157923.mlab.com:57923/heroku_r1pgdkc9',  { useNewUrlParser: true });
+mongoose.connect('mongodb://localhost:27017/bowling',  { useNewUrlParser: true });
+//mongoose.connect('mongodb://bowlingAdmin:45Wb6VM!@ds157923.mlab.com:57923/heroku_r1pgdkc9',  { useNewUrlParser: true });
 
 const db = mongoose.connection;
 

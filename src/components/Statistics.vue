@@ -9,9 +9,40 @@
                         <highcharts :options="chartMatchOptions" :updateArgs="matchArgs"></highcharts>
                     </div>
 
-                    <div class="box">
+                    <div class="box" v-if="chartGamesOptions.series.length">
                         <highcharts :options="chartGamesOptions"></highcharts>
+                    </div> 
+                    <div class="box" v-if="generalTableData.length">
+                        <b-table
+                            :data="generalTableData"
+                            :striped="true"
+                            :hoverable="true"
+                            :mobile-cards="true">
+
+                                <template slot-scope="props">
+                                    <b-table-column field="strikes" label="Strikes" centered>
+                                        {{ props.row.strikes }}
+                                    </b-table-column>
+
+                                    <b-table-column field="spares" label="Spares" centered>
+                                        {{ props.row.spares }}
+                                    </b-table-column>
+
+                                    <b-table-column field="gutter" label="Canaletas" centered>
+                                        <span class="tag is-danger">
+                                            {{ props.row.gutter }}
+                                        </span>
+                                    </b-table-column>
+
+                                    <b-table-column field="average" label="Média" centered>
+                                        <span class="tag is-success">
+                                            {{ props.row.average }}
+                                        </span>
+                                    </b-table-column>
+                                </template>
+                        </b-table>
                     </div>
+                    <p class="heading" v-if="!chartGamesOptions.series.length && !chartMatchOptions.series.length">Você ainda não possui partidas registradas, comece a marcar :) !</p>
                 </div>
             </div>
         </div>
@@ -35,6 +66,7 @@
                 loadingComponent: '',
             	matchArgs: [],
                 credentials: '',
+                generalTableData: [],
                 chartMatchOptions: {
                 	title: {
                 		text: 'Pinos por partida'
@@ -75,17 +107,36 @@
             },
             async mountMatchesGraphs(_games){
 
+                var vm = this;
+
                 dateFormat.masks.matchTime = 'd/m/yy HH:MM';
+                if(_games.length){
+                    var seriesPins = _games.map( ( game, index ) => {
+                        return { name: dateFormat(game.date, "matchTime"), marker: { symbol: 'circle' }, data: game.rolls }
+                    });
 
-                var seriesPins = _games.map( ( game, index ) => {
-                    return { name: dateFormat(game.date, "matchTime"), marker: { symbol: 'circle' }, data: game.rolls }
-                });
 
-                var seriesTotal =  { name: "Total", marker: { symbol: 'circle' }, data: _games.map( map => { return map.total}) }
+                    this.chartMatchOptions.series = seriesPins;
 
-                this.chartMatchOptions.series = seriesPins;
-                this.chartGamesOptions.series = seriesTotal;
+                    var add = function(a, b) {
+                        return a + b;
+                    }
+                    
+                    var gamesData = _games.map( map => { return map.total});
+                    if(gamesData.length){
+                        var seriesTotal =  [{ name: "Total", marker: { symbol: 'circle' }, data: gamesData }]
+                        this.chartGamesOptions.series = seriesTotal;
 
+                        this.generalTableData.push(
+                            { 
+                                'strikes': 8, 
+                                'spares': 7, 
+                                'average': gamesData.reduce(add, 0) / _games.length, 
+                                'gutter': 4
+                            }
+                        );
+                    }
+                }
             },
             loading(){
                 this.loadingComponent = this.$loading.open();
@@ -100,9 +151,9 @@
                 if(userStore){
                     this.loading();
                     
-                    var credentials = JSON.parse(userStore);
+                    this.credentials = JSON.parse(userStore);
 
-                    return this.$http.post(this.$remoteUrl + 'api/getMatches', credentials).then(response => {
+                    return this.$http.post(this.$remoteUrl + 'api/getMatches', this.credentials).then(response => {
                             vm.stopLoading();
                             return response.data.object;
                     }, function (response) {

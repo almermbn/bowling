@@ -86,8 +86,7 @@
                     {
                         field: 'name',
                         label: 'Nome',
-                        width: '40',
-                        numeric: true
+                        width: '40'
                     },
                     {
                         field: 'frame_1',
