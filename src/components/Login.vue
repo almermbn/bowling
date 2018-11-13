@@ -41,7 +41,7 @@
                                     </div>
                                 </div>
 
-                                <button class="button is-block is-dark is-large is-fullwidth" @click="doLogin">
+                                <button class="button is-block is-dark is-large is-fullwidth" @click="doLogin" :disabled="loading">
                                     <b-icon
                                         pack="fas"
                                         icon="sync-alt"
@@ -99,7 +99,7 @@
                                         </b-input>
                                     </div>
                                 </div>
-                                <button class="button is-block is-dark is-large is-fullwidth" @click="doRegister">
+                                <button class="button is-block is-dark is-large is-fullwidth" @click="doRegister" :disabled="loading">
                                     <b-icon
                                         pack="fas"
                                         icon="sync-alt"

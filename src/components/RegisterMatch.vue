@@ -7,7 +7,16 @@
                     <h3 class="title has-text-grey">Registrar partida</h3>
 
                     <div class="box list-item">
-                        <p class="is-danger">Frame atual da partida : {{ frameTable }}</p> 
+                        <b-field>
+                            <p class="is-danger">Frame atual da partida : {{ frameTable }}</p>
+                        </b-field>
+                        <b-field>
+                            <b-switch v-model="askConfirmation"
+                            type="is-dark">
+                                Solicitar confirmação ?
+                            </b-switch>
+                        </b-field>
+
 
                         <b-field>
                             <p class="control">
@@ -47,7 +56,7 @@
                             </h1>
                         </b-field>
                         <b-field v-if="matchComplete && tailedResults">
-                            <button class="button is-block is-dark is-large is-fullwidth" @click="registerMatch" >
+                            <button class="button is-block is-dark is-large is-fullwidth" @click="registerMatch" :disabled="loading">
                                 <b-icon
                                     pack="fas"
                                     icon="sync-alt"
@@ -130,7 +139,9 @@
                         label: '10',
                     },
                 ],
+                askConfirmation: true,
                 rolls: [],
+                rollIndex: 0,
                 currentRoll: 0,
                 frameIndex: 0,
                 frameTable: 1,
@@ -142,6 +153,13 @@
                 matchScore: 0,
                 tenSpare: false,
                 credentials: '',
+            }
+        },
+        watch: {
+            scoreOne: function(_val){
+                if(_val && parseInt(_val) == 10){
+                    this.scoreTwo = "0";
+                }
             }
         },
         mounted(){
@@ -182,7 +200,6 @@
             resetGame(){
                 this.rolls = [];
                 this.currentRoll = 0;
-                this.frameIndex = 0;
                 this.matchComplete = false;
                 this.tailedResults = false;
                 this.frameTable = 1;
@@ -192,43 +209,40 @@
                 this.firstData = [];
                 this.secondData = [];
                 this.tenSpare = false;
+                this.rollIndex = 0;
             },
             roll(pins) {
                 this.rolls[this.currentRoll++] = pins;
             },
-            rollMany (n, pins) {
-                for (var i = 0; i < n; i++) {
-                    this.roll(pins);            
-                }
+            sumOfBallsInFrame(_frame) {
+                return this.rolls[_frame] + this.rolls[_frame + 1];
             },
-            sumOfBallsInFrame() {
-                return this.rolls[this.frameIndex] + this.rolls[this.frameIndex + 1];
+            spareBonus(_frame) {
+                return this.rolls[_frame + 2];
             },
-            spareBonus() {
-                return this.rolls[this.frameIndex + 2];
+            strikeBonus(_frame) {
+                return this.rolls[_frame + 1] + this.rolls[_frame + 2];
             },
-            strikeBonus() {
-                return this.rolls[this.frameIndex + 1] + this.rolls[this.frameIndex + 2];
+            isStrike(_frame) {
+                return this.rolls[_frame] === 10;
             },
-            isStrike() {
-                return this.rolls[this.frameIndex] === 10;
-            },
-            isSpare() {
-                return this.rolls[this.frameIndex] + this.rolls[this.frameIndex + 1] === 10;
+            isSpare(_frame) {
+                return this.rolls[_frame] + this.rolls[_frame + 1] === 10;
             },
             score() {
                 var score = 0;
+                var frameIndex = 0;
  
                 for (var frame = 0; frame < 10; frame++) {
-                    if (this.isStrike()) {
-                        score += 10 + this.strikeBonus();
-                        this.frameIndex++;
+                    if (this.isStrike(frameIndex)) {
+                        score += 10 + this.strikeBonus(frameIndex);
+                        frameIndex++;
                     } else if (this.isSpare()) {
-                        score += 10 + this.spareBonus();
-                        this.frameIndex += 2;
+                        score += 10 + this.spareBonus(frameIndex);
+                        frameIndex += 2;
                     } else {
-                        score += this.sumOfBallsInFrame();
-                        this.frameIndex += 2;
+                        score += this.sumOfBallsInFrame(frameIndex);
+                        frameIndex += 2;
                     }
                 }
 
@@ -236,74 +250,69 @@
             },
             confirmDialog(_isStrike) {
 
-                if(this.frameTable == 12){
-                    this.scoreTwo = 0;
-                }
+                if(this.frameTable != 12){
+                    //usuario deve preencher os 2 campos com numeros que nao excedam 10.
+                    if(this.scoreOne && this.scoreTwo && ( parseInt(this.scoreOne) + parseInt(this.scoreTwo) > 10 )){
+                        this.danger('A soma dos campos não pode ser maior a 10.');
+                        return false;
+                    }
 
-                if(this.scoreOne && this.scoreTwo && ( parseInt(this.scoreOne) + parseInt(this.scoreTwo) > 10 )){
-                    this.danger('A soma dos campos não pode ser maior a 10.');
-                    return false;
-                }
+                    //usuario nao pode deixar o segundo campos vazios a não ser que seja o frame 11 ou 12, quando há spare ou strike no frame 10.
+                    if( (!this.scoreOne || !this.scoreTwo) && !_isStrike && !this.tenSpare){
+                        this.verifyFieldsMessage();
+                        return false;
+                    }
 
-                if(parseInt(this.scoreOne) == 10 && parseInt(this.scoreTwo) == 0){
-                    this.doConfirm(true);
-                } else if( (!this.scoreOne || !this.scoreTwo) && !_isStrike && this.frameTable != 12){
-                    if(this.frameTable == 11 && this.rolls[this.rolls.length -1] != 10){
-                        this.doConfirm(_isStrike);
-                    } else {
-                        this.danger('Selecione "Srike" ou preencha os campos.');
+                    if(this.tenSpare && !this.scoreOne){
+                        this.verifyFieldsMessage();
+                        return false;
                     }
                 } else {
-                    this.doConfirm(_isStrike);
+                    if(!this.scoreOne && !_isStrike){
+                        this.verifyFieldsMessage();
+                        return false;
+                    }
                 }
+                    
+
+                //caso o usuario digite 10 e 0
+                if(parseInt(this.scoreOne) == 10 && parseInt(this.scoreTwo) == 0){
+                    this.doConfirm(true);
+                } else {
+                    this.doConfirm(_isStrike);
+                } 
             },
             doConfirm(_isStrike){
                 var vm = this;
 
-                this.$dialog.confirm({
-                    message: _isStrike ? 'Confirmar frame <b>' + this.frameTable + '</b> com <b>STRIKE</b> ?' : 'Confirmar frame <b>' + this.frameTable + '</b>  ?',
-                    confirmText: 'Sim',
-                    cancelText: 'Cancelar',
-                    type: 'is-dark',
-                    onConfirm: () => { 
-                        if(_isStrike){
-                            vm.confirmFrame([10]);
-                        } else {
-                            vm.confirmFrame([parseInt(vm.scoreOne), parseInt(vm.scoreTwo)]);
-                        }
-                        vm.$toast.open('Frame ' + vm.frameTable + ' confirmado.');
-
-                        if((vm.frameTable == 10 || vm.frameTable == 11) && vm.rolls[vm.rolls.length -1] != 10 && vm.rolls[vm.rolls.length - 1] + vm.rolls[vm.rolls.length - 2] != 10){
-                            vm.matchComplete = true;
-                        }
-
-                        if(vm.frameTable == 10 && vm.rolls[vm.rolls.length -1] != 10){
-                           vm.tenSpare = true;
-                           vm.scoreTwo = 0;
-                        }
-
-                        if((vm.frameTable == 12 && vm.rolls[vm.rolls.length -2] != 10) || (vm.frameTable == 12 && vm.rolls[vm.rolls.length -2] == 10 && vm.rolls[vm.rolls.length -1] == 10)){
-                            vm.matchComplete = true;
-                        }
-
-                        if(!vm.matchComplete){
-                            vm.frameTable++;
-                        } else {
-
-                            if(vm.tenSpare){
-                                vm.rolls.pop();
+                if(this.askConfirmation){
+                   this.$dialog.confirm({
+                        message: _isStrike ? 'Confirmar frame <b>' + this.frameTable + '</b> com <b>STRIKE</b> ?' : 'Confirmar frame <b>' + this.frameTable + '</b>  ?',
+                        confirmText: 'Sim',
+                        cancelText: 'Cancelar',
+                        type: 'is-dark',
+                        onConfirm: () => { 
+                            if(_isStrike){
+                                vm.confirmFrame([10]);
+                            } else {
+                                vm.confirmFrame([parseInt(vm.scoreOne), parseInt(vm.scoreTwo)]);
                             }
 
-                            for(var i = 0; i < vm.rolls.length; i++ ){
-                                vm.roll(vm.rolls[i]);
-                            }
-
-                            vm.matchScore = vm.score();
-                            vm.tailResults();
+                            vm.$toast.open({ message: 'Frame ' + vm.frameTable + ' confirmado.', duration: 800, });
+                            this.verifyGameComplete(_isStrike);
                         }
-
+                    }) 
+                } else {
+                    if(_isStrike){
+                        vm.confirmFrame([10]);
+                    } else {
+                        vm.confirmFrame([parseInt(vm.scoreOne), parseInt(vm.scoreTwo)]);
                     }
-                })
+
+                    vm.$toast.open({ message: 'Frame ' + vm.frameTable + ' confirmado.', duration: 800, });
+                    this.verifyGameComplete(_isStrike);
+                }
+            
             },
             tailResults(){
                 
@@ -313,12 +322,18 @@
 
                     var tempFirst = {};
                     var tempI = 0;
+                    
                 
                     for (var i = 0; i < this.rolls.length && frame <= 5; i++) {
+
+                        var currentRoll = this.rolls[i].toString();
+                        var nextRoll = this.rolls[i + 1] ? this.rolls[i + 1].toString() : '';
+                        var finalRoll = this.rolls[i + 2] ? this.rolls[i + 2].toString() : '';
+
                         if(this.rolls[i] == 10){
-                            tempFirst['frame_' + frame] = this.rolls[i].toString();
+                            tempFirst['frame_' + frame] = currentRoll;
                         } else {
-                            tempFirst['frame_' + frame] = this.rolls[i].toString() + ' ' + this.rolls[i + 1].toString();
+                            tempFirst['frame_' + frame] = currentRoll + ' ' + nextRoll;
                             i++;
                         }
                         frame++;
@@ -331,15 +346,20 @@
                     frame = 6;
                     var tempSecond = {}
                     for (var i = tempI; i < this.rolls.length && frame <= 10; i++) {
+
+                        var currentRoll = this.rolls[i].toString();
+                        var nextRoll = this.rolls[i + 1] ? this.rolls[i + 1].toString() : '';
+                        var finalRoll = this.rolls[i + 2] ? this.rolls[i + 2].toString() : '';
+
                         if(frame == 10 && this.rolls[i] == 10){
-                            tempSecond['frame_' + frame] = this.rolls[i].toString() + ' ' + this.rolls[i + 1].toString()  + ' ' + this.rolls[i + 2].toString();
+                            tempSecond['frame_' + frame] = currentRoll + ' ' + nextRoll  + ' ' + finalRoll;
                         } else {
                             if(this.rolls[i] == 10){
-                                tempSecond['frame_' + frame] = this.rolls[i].toString();
+                                tempSecond['frame_' + frame] = currentRoll;
                             } else {
                                 tempSecond['frame_' + frame] = frame == 10 ? 
-                                    this.rolls[i].toString() + ' ' + this.rolls[i + 1].toString()  + ' ' + this.rolls[i + 2].toString() : 
-                                    this.rolls[i].toString() + ' ' + this.rolls[i + 1].toString();
+                                    currentRoll + ' ' + nextRoll  + ' ' + finalRoll : 
+                                    currentRoll + ' ' + nextRoll;
                                 i++;
                             }
                         }
@@ -349,6 +369,48 @@
                     this.secondData.push(tempSecond);
 
                     this.tailedResults = true;
+                }
+            },
+            verifyFieldsMessage(){
+                this.danger('Selecione "Srike" ou preencha os campos.');
+            },
+            verifyGameComplete(_isStrike){
+
+                if(this.frameTable == 10 && this.isSpare(this.rollIndex)){
+                    this.tenSpare = true;
+                }
+
+                // se nao for strike ou spare no frame 10, fim de jogo
+                if(this.frameTable == 10 && !this.isSpare(this.rollIndex) && !this.isStrike(this.rollIndex)){
+                    this.matchComplete = true;
+                }
+
+                //se frame 11 for um spare e nao houver strike, fim de jogo.
+                if(this.frameTable == 11 && !this.isStrike(this.rollIndex)){
+                    this.matchComplete = true;
+                }
+
+                //se for frame 12, fim de jogo
+                 if(this.frameTable == 12){
+                    this.matchComplete = true;
+                }
+
+                if(this.isStrike(this.rollIndex)){
+                    this.rollIndex++;
+                } else {
+                    this.rollIndex += 2;
+                }
+
+                if(!this.matchComplete){
+                    this.frameTable++;
+                } else {
+
+                    for(var i = 0; i < this.rolls.length; i++ ){
+                        this.roll(this.rolls[i]);
+                    }
+
+                    this.matchScore = this.score();
+                    this.tailResults();
                 }
             },
             confirmResetGame(){
@@ -368,7 +430,7 @@
             },
             danger(_msg) {
                 this.$toast.open({
-                    duration: 3000,
+                    duration: 1000,
                     message: _msg,
                     position: 'is-bottom',
                     type: 'is-danger'
@@ -386,7 +448,11 @@
                     this.rolls.push(10);
                 } else {
                     this.rolls.push(_score[0]);
-                    this.rolls.push(_score[1]);
+
+                    //valida pontuacao do ultimo frame.
+                    if(_score[1] != null){
+                        this.rolls.push(_score[1]);
+                    }
                 }
 
                 this.scoreOne = '';
