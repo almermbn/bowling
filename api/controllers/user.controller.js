@@ -82,5 +82,44 @@ exports.register_match = function(req, res) {
 
         res.json( response );
     });
-    
+};
+
+exports.get_matches = function(req, res) {
+
+    var user = req.body.user;
+
+    User.find({ user: user }, null, null, function (err, docs) {
+        if (err){
+            res.send(err);
+        }
+
+        docs[0].matches.sort(function(a, b) { 
+            return a.date - b.date;
+        })
+
+        var response = {
+            saveOk: true,
+            message: '',
+            object: docs[0].matches
+        }
+
+        res.json( response );
+    });
+};
+
+exports.delete_matches = function(req, res) {
+
+    var user = req.body.user;
+
+    User.findOneAndUpdate({ user: user }, {  matches: [] }, function (err, docs) {
+        if (err){
+            res.send(err);
+        }
+
+        var response = {
+            saveOk: true,
+        }
+
+        res.json( response );
+    });
 };

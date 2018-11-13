@@ -12,6 +12,7 @@
   "dependencies": {
     "animate.css": "^3.7.0",
     "body-parser": "^1.18.3",
+    "dateformat": "^3.0.3",
     "express": "^4.16.4",
     "highcharts": "^6.2.0",
     "highcharts-vue": "^1.2.0",
