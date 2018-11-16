@@ -8,15 +8,10 @@
 
                     <div class="box list-item">
                         <b-field>
-                            <p class="is-danger">Frame atual da partida : {{ frameTable }}</p>
+                            <transition name="fadeInDown" mode="out-in">
+                                <p class="old-sports" :key="frameTable">{{ frameTable }}</p>
+                            </transition>
                         </b-field>
-                        <b-field>
-                            <b-switch v-model="askConfirmation"
-                            type="is-dark">
-                                Solicitar confirmação ?
-                            </b-switch>
-                        </b-field>
-
 
                         <b-field>
                             <p class="control">
@@ -31,8 +26,13 @@
                              <p class="control">
                                 <button class="button is-dark" @click="confirmDialog()" :disabled="matchComplete">Ok</button>
                             </p>
-
                         </b-field>
+                        <b-field>
+                            <b-switch v-model="askConfirmation"
+                            type="is-dark" @input="saveUserConfirmOption">
+                                Solicitar confirmação ?
+                            </b-switch>
+                        </b-field>                        
                         <b-field>
                             <a class="button is-large is-dark is-fullwidth" @click="confirmResetGame">
                                 <span class="icon">
@@ -41,33 +41,40 @@
                                 <span>Resetar partida</span>
                             </a>
                         </b-field>
-                        <b-field v-show="matchComplete && tailedResults">
-                            <b-table :data="firstData" :columns="firstColumns"></b-table>
-                        </b-field>
-                        <b-field v-show="matchComplete && tailedResults">
-                            <b-table :data="secondData" :columns="secondColumns"></b-table>
-                        </b-field>
-                        <b-field v-show="matchComplete && tailedResults">
-                            <h1 class="title">
-                                <h1 class="title">   
-                                    <a class="button is-success is-large is-inverted">{{ matchScore }}</a>
+                        <transition name="slideInLeft" mode="out-in">
+                            <b-field v-show="matchComplete && tailedResults">
+                                <b-table :data="firstData" :columns="firstColumns"></b-table>
+                            </b-field>
+                        </transition>
+                        <transition name="slideInLeft" mode="out-in">
+                            <b-field v-show="matchComplete && tailedResults">
+                                <b-table :data="secondData" :columns="secondColumns"></b-table>
+                            </b-field>
+                        </transition>     
+                        <transition name="slideInLeft" mode="out-in">
+                            <b-field v-show="matchComplete && tailedResults">
+                                <h1 class="title">
+                                    <h1 class="title">   
+                                        <a class="button is-success is-large is-inverted">{{ matchScore }}</a>
+                                    </h1>
+                                    
                                 </h1>
-                                
-                            </h1>
-                        </b-field>
-                        <b-field v-if="matchComplete && tailedResults">
-                            <button class="button is-block is-dark is-large is-fullwidth" @click="registerMatch" :disabled="loading">
-                                <b-icon
-                                    pack="fas"
-                                    icon="sync-alt"
-                                    custom-class="fa-spin" 
-                                    v-show="loading">
-                                </b-icon>
-                                <span v-show="!loading">Salvar partida</span>
-                            </button>
-                        </b-field>
+                            </b-field>
+                        </transition> 
+                        <transition name="slideInLeft" mode="out-in">   
+                            <b-field v-if="matchComplete && tailedResults">
+                                <button class="button is-block is-dark is-large is-fullwidth" @click="registerMatch" :disabled="loading">
+                                    <b-icon
+                                        pack="fas"
+                                        icon="sync-alt"
+                                        custom-class="fa-spin" 
+                                        v-show="loading">
+                                    </b-icon>
+                                    <span v-show="!loading">Salvar partida</span>
+                                </button>
+                            </b-field>
+                        </transition>    
                     </div>
-
                 </div>
             </div>
             
@@ -138,7 +145,8 @@
                         label: '10',
                     },
                 ],
-                askConfirmation: true,
+                loadingComponent: '',
+                askConfirmation: 'initial',
                 rolls: [],
                 rollIndex: 0,
                 currentRoll: 0,
@@ -152,6 +160,7 @@
                 matchScore: 0,
                 tenSpare: false,
                 credentials: '',
+                actualScore: 0
             }
         },
         watch: {
@@ -159,12 +168,30 @@
                 if(_val && parseInt(_val) == 10){
                     this.scoreTwo = "0";
                 }
+            },
+        },
+        beforeMount(){
+            this.credentials = localStorage.getItem('userLogin') ? JSON.parse(localStorage.getItem('userLogin')) : null;
+            if(this.credentials && this.credentials.preferences){
+                this.askConfirmation = this.credentials.preferences.askConfirmation;
             }
         },
-        mounted(){
-            this.credentials = localStorage.getItem('userLogin') ? JSON.parse(localStorage.getItem('userLogin')) : null;
-        },
         methods: {
+            showLoading(){
+                this.loadingComponent = this.$loading.open();
+            },
+            stopLoading(){
+                this.loadingComponent.close();
+            },
+            saveUserConfirmOption(_val){
+                this.showLoading();
+                this.$http.post(this.$remoteUrl + 'api/saveConfirmPreference', { user: this.credentials.user, askConfirmation: this.askConfirmation }).then(response => {
+                    localStorage.setItem('userLogin', JSON.stringify(response.data.object));
+                    this.stopLoading();
+                },function (response) {
+                    this.stopLoading();
+                });
+            },
             registerMatch(){
  
                 if(this.credentials){
@@ -462,6 +489,10 @@
 </script>
 
 <style scoped>
+    .old-sports {
+        font-family: 'OldSports';
+        font-size: 40px;
+    }
     .box {
         background-image: -webkit-gradient(linear, 0 100%, 0 0, from(orange), to(gold));
     }

@@ -19,6 +19,8 @@ var userChma = new User({
     matches: {
     	type: [Matches],
     },
-
+	preferences: {
+		type: Object
+	}
 });
 module.exports = mongoose.model('User', userChma);
