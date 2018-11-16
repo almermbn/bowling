@@ -165,7 +165,7 @@
                     this.loading = true;
 
                     var credentials = {
-                        user: this.login,
+                        user: this.login.toLowerCase(),
                         pwd: this.pwd
                     }
 

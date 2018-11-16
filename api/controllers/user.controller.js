@@ -4,13 +4,13 @@ User = mongoose.model('User');
 
 exports.register_user = function(req, res) {
     var userDoc = {
-        user : req.body.user,
+        user : req.body.user.toLowerCase(),
         pwd : req.body.pwd,
     }
     
     var userModel = new User(userDoc);
 
-    User.find({ user: req.body.user }, null, null, function (err, docs) {
+    User.find({ user: req.body.user.toLowerCase() }, null, null, function (err, docs) {
         if (err){
             res.send(err);
         }
@@ -38,7 +38,7 @@ exports.register_user = function(req, res) {
 exports.login_user = function(req, res) {
     
     var userDoc = {
-        user : req.body.user,
+        user : req.body.user.toLowerCase(),
         pwd : req.body.pwd,
     }
 
@@ -118,6 +118,23 @@ exports.delete_matches = function(req, res) {
 
         var response = {
             statusOk: true,
+        }
+
+        res.json( response );
+    });
+};
+exports.save_confirm_preference = function(req, res) {
+
+    var user = req.body.user;
+
+    User.findOneAndUpdate({ user: user }, {  'preferences.askConfirmation': req.body.askConfirmation }, {new: true}, function (err, docs) {
+        if (err){
+            res.send(err);
+        }
+
+        var response = {
+            statusOk: true,
+            object: docs
         }
 
         res.json( response );

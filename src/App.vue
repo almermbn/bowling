@@ -37,7 +37,7 @@
                                 pack="fas"
                                 icon="trash-alt">
                             </b-icon>
-                            <span>Apagar Estatística</span>
+                            <span>Apagar</span>
                         </button>
 
                         <button class="button is-danger" @click="leave">
@@ -128,7 +128,7 @@
             },
             confirmDeleteData() {
                 this.$dialog.confirm({
-                    title: 'Apagar estatísticas do jogador ?',
+                    title: 'Exlusão de estatísticas ?',
                     message: 'Deseja <b>apagar</b> as <b>estatísticas</b> ? Esta ação <b>não</b> poderá ser desfeita.',
                     type: 'is-danger',
                     hasIcon: true,
@@ -166,6 +166,11 @@
 
     @import "~bulma";
     @import "~buefy/src/scss/buefy";
+    @font-face {
+        font-family: 'OldSports';
+        src: url('assets/old_sport.ttf');
+        src: url('assets/old_sport_2.ttf') 
+    }
 
     .fade-enter-active, .fade-leave-active {
       transition: opacity .5s;
