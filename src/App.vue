@@ -89,15 +89,10 @@
                     this.danger('Houve um problema ao recuperar os dados do usuário. Efetue o login novamente.');
                     this.$router.replace('/');
                 } else {
-                    try {
-                        var obj = JSON.parse(user);
+                    if(user){
+                        var obj = JSON.parse(user);   
                         this.credentials = obj;
-                    } catch (e) {
-                        console.log(e);
-                        console.log('Fail string:' + user);
-                        this.danger('Houve um problema ao recuperar os dados do usuário. Efetue o login novamente.');
-                        this.$router.replace('/');
-                    }
+                    }  
                 }
             }
         },
