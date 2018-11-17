@@ -66,6 +66,9 @@
                 loadingComponent: '',
             	matchArgs: [],
                 credentials: '',
+                strikes: 0,
+                spares: 0,
+                gutters: 0,
                 generalTableData: [],
                 chartMatchOptions: {
                 	title: {
@@ -121,6 +124,10 @@
                     var add = function(a, b) {
                         return a + b;
                     }
+
+                    _games.forEach( (game) => {
+                        vm.tailScoreData(game);
+                    });
                     
                     var gamesData = _games.map( map => { return map.total});
                     if(gamesData.length){
@@ -129,14 +136,49 @@
 
                         this.generalTableData.push(
                             { 
-                                'strikes': 8, 
-                                'spares': 7, 
-                                'average': gamesData.reduce(add, 0) / _games.length, 
-                                'gutter': 4
+                                'strikes': vm.strikes, 
+                                'spares': vm.spares, 
+                                'average': (gamesData.reduce(add, 0) / _games.length).toFixed(0), 
+                                'gutter': vm.gutters
                             }
                         );
                     }
                 }
+            },
+            tailScoreData(_game){
+                var score = 0;
+                var frameIndex = 0;
+
+                for (var frame = 0; frame < 10; frame++) {
+                    if (this.isStrike(_game, frameIndex)) {
+                        if(frame == 9 && _game.rolls[frameIndex] == 10){
+                            _game.rolls[frameIndex + 1] == 10 ?  this.strikes++ : null;
+                            _game.rolls[frameIndex + 2] == 10 ?  this.strikes++ : null;
+                        }
+                        frameIndex++;
+                        this.strikes++;
+                    } else if (this.isSpare(_game, frameIndex)) {
+                        this.spares++;
+                        frameIndex += 2;
+                    } else {
+                        if(_game.rolls[frameIndex] == 0 || _game.rolls[frameIndex + 1] == 0){
+                            this.gutters++;
+                        }
+                        frameIndex += 2;
+                    }
+                }
+            },
+            strikeBonus(_game, _frame) {
+                return _game.rolls[_frame + 1] + _game.rolls[_frame + 2];
+            },
+            isStrike(_game, _frame) {
+                return _game.rolls[_frame] === 10;
+            },
+            isSpare(_game, _frame) {
+                if(_game.rolls[_frame] == 0 || _game.rolls[_frame + 1] == 0){
+                    this.gutters++;
+                }
+                return _game.rolls[_frame] + _game.rolls[_frame + 1] === 10;
             },
             loading(){
                 this.loadingComponent = this.$loading.open();

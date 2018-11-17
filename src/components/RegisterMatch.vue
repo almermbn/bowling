@@ -263,7 +263,7 @@
                     if (this.isStrike(frameIndex)) {
                         score += 10 + this.strikeBonus(frameIndex);
                         frameIndex++;
-                    } else if (this.isSpare()) {
+                    } else if (this.isSpare(frameIndex)) {
                         score += 10 + this.spareBonus(frameIndex);
                         frameIndex += 2;
                     } else {
@@ -353,8 +353,8 @@
                     for (var i = 0; i < this.rolls.length && frame <= 5; i++) {
 
                         var currentRoll = this.rolls[i].toString();
-                        var nextRoll = this.rolls[i + 1] ? this.rolls[i + 1].toString() : '';
-                        var finalRoll = this.rolls[i + 2] ? this.rolls[i + 2].toString() : '';
+                        var nextRoll = this.rolls[i + 1] != undefined ? this.rolls[i + 1].toString() : '';
+                        var finalRoll = this.rolls[i + 2] != undefined ? this.rolls[i + 2].toString() : '';
 
                         if(this.rolls[i] == 10){
                             tempFirst['frame_' + frame] = currentRoll;
@@ -374,8 +374,8 @@
                     for (var i = tempI; i < this.rolls.length && frame <= 10; i++) {
 
                         var currentRoll = this.rolls[i].toString();
-                        var nextRoll = this.rolls[i + 1] ? this.rolls[i + 1].toString() : '';
-                        var finalRoll = this.rolls[i + 2] ? this.rolls[i + 2].toString() : '';
+                        var nextRoll = this.rolls[i + 1] != undefined ? this.rolls[i + 1].toString() : '';
+                        var finalRoll = this.rolls[i + 2] != undefined ? this.rolls[i + 2].toString() : '';
 
                         if(frame == 10 && this.rolls[i] == 10){
                             tempSecond['frame_' + frame] = currentRoll + ' ' + nextRoll  + ' ' + finalRoll;
