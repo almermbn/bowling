@@ -166,13 +166,21 @@
     @import url('../node_modules/@fortawesome//fontawesome-free/css/all.css');
     @import url('../node_modules/vue-animate-transitions/dist/vue-animate-transitions.min.css');
 
+    /* override bulma css here */
+    $primary: #363636;
+
+     /* end override */
+
     @import "~bulma";
     @import "~buefy/src/scss/buefy";
+
     @font-face {
         font-family: 'OldSports';
         src: url('assets/old_sport.ttf');
         src: url('assets/old_sport_2.ttf') 
     }
+
+
 
     .fade-enter-active, .fade-leave-active {
       transition: opacity .5s;

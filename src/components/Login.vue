@@ -173,7 +173,7 @@
                         var result = response.data;
 
                         if(result.saveOk){
-                            localStorage.setItem('userLogin', JSON.stringify(credentials));
+                            localStorage.setItem('userLogin', JSON.stringify(response.data.object));
                             this.loading = false;
                             this.success(result.message);
                             this.loggedIn = true;
