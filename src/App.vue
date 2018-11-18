@@ -1,18 +1,54 @@
 <template>
     <div id="app">
+        <b-modal :active.sync="reportActive" scroll="keep">
+            <div class="card">
+                <div class="card-content">
+                    <div class="content">
+                        <b-field label="Por favor, descreva o que aconteceu.">
+                            <b-input type="textarea"
+                                minlength="10"
+                                maxlength="200"
+                                v-model="problemData"
+                                placeholder="Meu problema foi ...">
+                            </b-input>
+                        </b-field>
+                        <button class="button is-block is-danger is-large is-fullwidth" @click="reportProblem" :disabled="isLoading || !problemData.trim().length">
+                            <b-icon
+                                pack="fas"
+                                icon="sync-alt"
+                                custom-class="fa-spin" 
+                                v-show="isLoading">
+                            </b-icon>
+                            <span v-show="!isLoading">Reportar</span>
+                        </button>
+                        
+                    </div>
+                </div>
+            </div>
+        </b-modal>
 
        <!--  <nav class="navbar is-fixed-top"></nav> -->
         <nav class="navbar is-dark is-fixed-top" role="navigation" aria-label="main navigation" v-show="showBottomNavBar">
             <div class="navbar-end">
                 <div class="navbar-item navbar-center">
                     <div class="buttons">
-                        <a class="button is-danger">
-                            <span class="icon">
-                                <i class="fas fa-user"></i>
-                            </span>
-                            <span>{{ credentials.user }}</span>
-                        </a>                   
+                        <button class="button is-danger" >
+                            <b-icon
+                                pack="fas"
+                                icon="user">
+                            </b-icon>
+                            <span >{{ credentials.name ? credentials.name:  credentials.user }}</span>
+                        </button>
+
+                        <button class="button is-danger" @click="reportActive = true" >
+                            <b-icon
+                                pack="fas"
+                                icon="exclamation">
+                            </b-icon>
+                            <span>Problema?</span>
+                        </button>
                     </div>
+
                 </div>
             </div>
         </nav>
@@ -64,6 +100,9 @@
                 showBottomNavBar: '',
                 showDeleteStatistics: '',
                 credentials: '',
+                reportActive: false,
+                isLoading: false,
+                problemData: ''
             }
         },
         mounted(){
@@ -105,7 +144,7 @@
                     type: 'is-danger'
                 })
             },
-            success(_ms){
+            success(_msg){
                  this.$toast.open({
                     duration: 3000,
                     message: _msg,
@@ -121,6 +160,31 @@
             leave(){
                 localStorage.setItem('userLogin', '');
                 this.$router.replace('/');
+            },
+            reportProblem(){
+                var vm = this;
+                this.isLoading = true;
+
+                var problem = {
+                    message: this.problemData,
+                    user: this.credentials.user
+                }
+
+                this.$http.post(this.$remoteUrl + 'api/reportProblem', problem).then(response => {
+                    var result = response.data;
+
+                    if(result.saveOk){
+                        localStorage.setItem('userLogin', JSON.stringify(response.data.object));
+                        this.isLoading = false;
+                        this.reportActive = false;
+                        this.problemData = '';
+                        this.success(result.message);
+                    }
+                },function (response) {
+                    console.log(response.data.message);
+                    this.loading = false;
+                });
+
             },
             loading(){
                 this.loadingComponent = this.$loading.open();
@@ -180,7 +244,13 @@
         src: url('assets/old_sport_2.ttf') 
     }
 
+    .old-sports-text {
+        font-family: 'OldSports';
+    }
 
+    .menu-sized {
+        font-size: 16px;
+    }
 
     .fade-enter-active, .fade-leave-active {
       transition: opacity .5s;

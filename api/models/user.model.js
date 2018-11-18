@@ -21,6 +21,15 @@ var userChma = new User({
     },
 	preferences: {
 		type: Object
-	}
+	},
+	name: {
+        type: String
+    },
+    lastName: {
+        type: String
+    },
+    email: {
+        type: String
+    }
 });
 module.exports = mongoose.model('User', userChma);

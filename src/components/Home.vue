@@ -4,7 +4,7 @@
         <div class="hero-body">
             <div class="container has-text-centered">
                 <div class="column is-4 is-offset-4">
-                    <h3 class="title has-text-grey">Menu</h3>
+                    <h3 class="title has-text-grey old-sports-text">Menu</h3>
                     <div class="box list-item">
                         <form>
                             <b-field>
@@ -12,7 +12,7 @@
                                     <span class="icon">
                                         <i class="fas fa-bowling-ball"></i>
                                     </span>
-                                    <span>Registrar partida</span>
+                                    <span class="old-sports-text menu-sized">Registrar partida</span>
                                 </a>
                             </b-field>
                             <b-field>
@@ -20,7 +20,7 @@
                                     <span class="icon">
                                         <i class="fas fa-chart-line"></i>
                                     </span>
-                                    <span>Estatísticas</span>
+                                    <span class="old-sports-text menu-sized">Estatísticas</span>
                                 </a>
                             </b-field>
                             <b-field>
@@ -28,7 +28,7 @@
                                     <span class="icon">
                                         <i class="fas fa-oil-can"></i>
                                     </span>
-                                    <span>Padrões de óleo</span>
+                                    <span class="old-sports-text menu-sized">Padrões de óleo</span>
                                 </a>
                             </b-field>
                             <b-field>
@@ -36,7 +36,15 @@
                                     <span class="icon">
                                         <i class="fas fa-calculator"></i>
                                     </span>
-                                    <span>Lançamento</span>
+                                    <span class="old-sports-text menu-sized">Lançamento</span>
+                                </a>
+                            </b-field>
+                            <b-field>
+                                <a class="button is-large  is-fullwidth" @click="goTo('/ranking')">
+                                    <span class="icon">
+                                        <i class="fas fa-trophy"></i>
+                                    </span>
+                                    <span class="old-sports-text menu-sized">Ranking</span>
                                 </a>
                             </b-field>
                             <b-field>
@@ -44,7 +52,7 @@
                                     <span class="icon">
                                         <i class="fas fa-power-off"></i>
                                     </span>
-                                    <span>Sair</span>
+                                    <span class="old-sports-text menu-sized">Sair</span>
                                 </a>
                             </b-field>
                         </form>

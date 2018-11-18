@@ -7,8 +7,8 @@
             <div class="hero-body">
                 <div class="container has-text-centered">
                     <div class="column is-4 is-offset-4">
-                        <h3 class="title has-text-grey">Login</h3>
-                        <p class="subtitle has-text-grey">Efetue seu login e senha para continuar.</p>
+                        <h3 class="title has-text-grey old-sports-text">Login</h3>
+                        <p class="subtitle has-text-grey old-sports-text"><small>Efetue seu login e senha para continuar.</small></p>
                         <div class="box">
                             <figure class="avatar">
                                 <img src="./../assets/logo.png">
@@ -48,12 +48,12 @@
                                         custom-class="fa-spin" 
                                         v-show="loading">
                                     </b-icon>
-                                    <span v-show="!loading">Login</span>
+                                    <span v-show="!loading" class="old-sports-text">Login</span>
                                 </button>
                             </form>
                         </div>
                         <p class="button is-text">
-                            <a @click="toggleRegister">Cadastrar</a>
+                            <a @click="toggleRegister" class="old-sports-text">Cadastrar</a>
                         </p>
                     </div>
                 </div>
@@ -67,8 +67,8 @@
             <div class="hero-body">
                 <div class="container has-text-centered">
                     <div class="column is-4 is-offset-4">
-                        <h3 class="title has-text-grey">Cadastrar</h3>
-                        <p class="subtitle has-text-grey">Informe seus dados para o cadastro.</p>
+                        <h3 class="title has-text-grey old-sports-text">Cadastrar</h3>
+                        <p class="subtitle has-text-grey old-sports-text"><small>Informe seus dados para o cadastro.</small></p>
                         <div class="box">
                             <figure class="avatar">
                                 <img src="./../assets/logo.png">
@@ -76,7 +76,41 @@
                             <form>
                                 <div class="field">
                                     <div class="control">
-                                        <b-input placeholder="Usuário"
+                                        <b-input placeholder="Nome"
+                                            type="text"
+                                            icon-pack="fas"
+                                            size="is-large"
+                                            ref="userName"
+                                            icon="user"
+                                            v-model="userName">
+                                        </b-input>
+                                    </div>
+                                </div>
+                                <div class="field">
+                                    <div class="control">
+                                        <b-input placeholder="Sobrenome"
+                                            type="text"
+                                            icon-pack="fas"
+                                            icon="user"
+                                            size="is-large"
+                                            ref="userLastName"
+                                            v-model="userLastName">
+                                        </b-input>
+                                    </div>
+                                </div>
+                                <b-field>
+                                    <b-input placeholder="Email"
+                                        type="email"
+                                        icon-pack="fas"
+                                        icon="envelope"
+                                        size="is-large"
+                                        ref="userEmail"
+                                        v-model="userEmail">
+                                    </b-input>                                   
+                                </b-field>
+                                <div class="field">
+                                    <div class="control">
+                                        <b-input placeholder="Usuário *"
                                             type="text"
                                             icon-pack="fas"
                                             icon="user"
@@ -88,7 +122,7 @@
                                 </div>
                                 <div class="field">
                                     <div class="control">
-                                        <b-input placeholder="Senha"
+                                        <b-input placeholder="Senha *"
                                             type="password"
                                             icon-pack="fas"
                                             icon="key"
@@ -99,6 +133,10 @@
                                         </b-input>
                                     </div>
                                 </div>
+                                <div class="field">
+                                    <small>* Campos obrigatórios</small>
+                                </div>
+
                                 <button class="button is-block is-dark is-large is-fullwidth" @click="doRegister" :disabled="loading">
                                     <b-icon
                                         pack="fas"
@@ -106,12 +144,12 @@
                                         custom-class="fa-spin" 
                                         v-show="loading">
                                     </b-icon>
-                                    <span v-show="!loading">Cadastrar</span>
+                                    <span v-show="!loading" class="old-sports-text">Cadastrar</span>
                                 </button>
                             </form>
                         </div>
                         <p class="button is-text">
-                            <a @click="toggleRegister">Voltar</a>
+                            <a @click="toggleRegister" class="old-sports-text">Voltar</a>
                         </p>
                     </div>
                 </div>
@@ -134,13 +172,23 @@
                 loggedIn: false,
                 loading: false,
                 transitionLogin: 'flipInY',
-                transitionRegister: 'flipOutY'
+                transitionRegister: 'flipOutY',
+                userName: '',
+                userEmail: '',
+                userLastName: '',
             }
         },
         mounted(){
             this.checkExistentUser();
         },
         methods: {
+            clearRegisterData(){
+                this.userName = '';
+                this.userLastName = '';
+                this.userEmail = '';
+                this.userRegister = '';
+                this.userPwd = '';
+            },
             toggleRegister(){
                 var vm = this;
 
@@ -160,7 +208,6 @@
             doLogin(){
                 
                 if(this.isValidLogin()){
-                    this.loading = false;
 
                     this.loading = true;
 
@@ -198,8 +245,12 @@
 
                     var credentials = {
                         user: this.userRegister,
-                        pwd: this.userPwd
+                        pwd: this.userPwd,
+                        name: this.userName,
+                        lastName: this.userLastName,
+                        email: this.userEmail
                     }
+
                     this.loading = true;
 
                     this.$http.post(this.$remoteUrl + 'api/register', credentials).then(response => {
@@ -213,6 +264,7 @@
 
                             localStorage.setItem('userLogin', JSON.stringify(credentials));
                             this.loading = false;
+                            this.clearRegisterData();
                             this.success('Cadastro efetuado com sucesso!');
                         } else {
                             this.danger(result.message);
