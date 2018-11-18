@@ -6,6 +6,7 @@ import Statistics from '@/components/Statistics'
 import PlayingArea from '@/components/PlayingArea'
 import Oils from '@/components/Oils'
 import RegisterMatch from '@/components/RegisterMatch'
+import Ranking from '@/components/Ranking'
 
 Vue.use(Router)
 
@@ -40,10 +41,17 @@ export default new Router({
         component: Oils,
         mode: 'abstract'
     }
-    ,{
+    ,
+    {
         path: '/registerMatch',
         name: 'RegisterMatch',
         component: RegisterMatch,
+        mode: 'abstract'
+    },
+    {
+        path: '/ranking',
+        name: 'Ranking',
+        component: Ranking,
         mode: 'abstract'
     }
     ]

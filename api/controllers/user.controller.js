@@ -6,6 +6,9 @@ exports.register_user = function(req, res) {
     var userDoc = {
         user : req.body.user.toLowerCase(),
         pwd : req.body.pwd,
+        name: req.body.name,
+        lastName: req.body.lastName,
+        email: req.body.email
     }
     
     var userModel = new User(userDoc);

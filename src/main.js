@@ -7,10 +7,13 @@ import router from './router'
 import Buefy from 'buefy'
 import VueResource from "vue-resource"
 import HighchartsVue from 'highcharts-vue'
+import VueAnimateNumber from 'vue-animate-number'
+
 
 Vue.use(Buefy)
 Vue.use(VueResource)
 Vue.use(HighchartsVue)
+Vue.use(VueAnimateNumber)
 
 Vue.config.productionTip = false;
 Vue.prototype.$remoteUrl = "";

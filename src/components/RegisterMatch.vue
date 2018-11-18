@@ -4,18 +4,17 @@
         <div class="hero-body">
             <div class="container has-text-centered">
                 <div class="column is-4 is-offset-4">
-                    <h3 class="title has-text-grey">Registrar partida</h3>
-
+                    <h3 class="title has-text-grey old-sports-text">Registrar partida</h3>
                     <div class="box list-item">
                         <b-field>
                             <transition name="fadeInDown" mode="out-in">
-                                <p class="old-sports" :key="frameTable">{{ frameTable }}</p>
+                                <p class="old-sports-text" style="font-size: 40px" :key="frameTable">{{ frameTable }}</p>
                             </transition>
                         </b-field>
 
                         <b-field>
                             <p class="control">
-                                <button class="button is-dark" @click="confirmDialog(true)" :disabled="matchComplete">Strike</button>
+                                <button class="button is-dark old-sports-text" @click="confirmDialog(true)" :disabled="matchComplete">Strike</button>
                             </p>                            
                             <p class="control">
                                 <b-input type="number" placeholder="5"  v-model="scoreOne" :disabled="matchComplete"></b-input>
@@ -24,7 +23,7 @@
                                 <b-input type="number" placeholder="5"  v-model="scoreTwo" :disabled="frameTable == 12 || tenSpare || matchComplete"></b-input>
                             </p>
                              <p class="control">
-                                <button class="button is-dark" @click="confirmDialog()" :disabled="matchComplete">Ok</button>
+                                <button class="button is-dark old-sports-text" @click="confirmDialog()" :disabled="matchComplete">Ok</button>
                             </p>
                         </b-field>
                         <b-field>
@@ -38,9 +37,19 @@
                                 <span class="icon">
                                     <i class="fas fa-times-circle"></i>
                                 </span>
-                                <span>Resetar partida</span>
+                                <span class="old-sports-text">Resetar</span>
                             </a>
                         </b-field>
+                        <transition name="slideInLeft" mode="out-in">
+                            <b-field v-if="matchComplete && tailedResults">
+                                <h1 class="title">
+                                    <h1 class="title">
+                                        <a class="button is-success is-large is-inverted old-sports-text"><animate-number from="0" :to="matchScore" duration="2000"></animate-number></a>
+                                    </h1>
+                                    
+                                </h1>
+                            </b-field>
+                        </transition> 
                         <transition name="slideInLeft" mode="out-in">
                             <b-field v-show="matchComplete && tailedResults">
                                 <b-table :data="firstData" :columns="firstColumns"></b-table>
@@ -51,16 +60,7 @@
                                 <b-table :data="secondData" :columns="secondColumns"></b-table>
                             </b-field>
                         </transition>     
-                        <transition name="slideInLeft" mode="out-in">
-                            <b-field v-show="matchComplete && tailedResults">
-                                <h1 class="title">
-                                    <h1 class="title">   
-                                        <a class="button is-success is-large is-inverted">{{ matchScore }}</a>
-                                    </h1>
-                                    
-                                </h1>
-                            </b-field>
-                        </transition> 
+                    
                         <transition name="slideInLeft" mode="out-in">   
                             <b-field v-if="matchComplete && tailedResults">
                                 <button class="button is-block is-dark is-large is-fullwidth" @click="registerMatch" :disabled="loading">
@@ -70,7 +70,7 @@
                                         custom-class="fa-spin" 
                                         v-show="loading">
                                     </b-icon>
-                                    <span v-show="!loading">Salvar partida</span>
+                                    <span v-show="!loading" class="old-sports-text">Salvar</span>
                                 </button>
                             </b-field>
                         </transition>    
@@ -324,7 +324,7 @@
                                 vm.confirmFrame([parseInt(vm.scoreOne), parseInt(vm.scoreTwo)]);
                             }
 
-                            vm.$toast.open({ message: 'Frame ' + vm.frameTable + ' confirmado.', duration: 800, });
+                            vm.$toast.open({ message: 'Frame ' + vm.frameTable + ' confirmado.', duration: 800, type: 'is-success'});
                             this.verifyGameComplete(_isStrike);
                         }
                     }) 
@@ -335,7 +335,7 @@
                         vm.confirmFrame([parseInt(vm.scoreOne), parseInt(vm.scoreTwo)]);
                     }
 
-                    vm.$toast.open({ message: 'Frame ' + vm.frameTable + ' confirmado.', duration: 800, });
+                    vm.$toast.open({ message: 'Frame ' + vm.frameTable + ' confirmado.', duration: 800, type: 'is-success'});
                     this.verifyGameComplete(_isStrike);
                 }
             
@@ -450,7 +450,7 @@
                         iconPack: 'fas',
                         onConfirm: () => {
                             this.resetGame();
-                            this.success('Partida reiniciada com sucesso');
+                            this.success('Partida reiniciada');
                         }
                     })
             },
@@ -489,10 +489,6 @@
 </script>
 
 <style scoped>
-    .old-sports {
-        font-family: 'OldSports';
-        font-size: 40px;
-    }
     .box {
         background-image: -webkit-gradient(linear, 0 100%, 0 0, from(orange), to(gold));
     }

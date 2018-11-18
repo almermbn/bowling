@@ -4,7 +4,7 @@
         <div class="hero-body">
             <div class="container has-text-centered">
                 <div class="column is-4 is-offset-4">
-                    <h3 class="title has-text-grey">Estatísticas</h3>                    
+                    <h3 class="title has-text-grey old-sports-text">Estatísticas</h3>                    
                     <div class="box" v-if="chartMatchOptions.series.length">
                         <highcharts :options="chartMatchOptions" :updateArgs="matchArgs"></highcharts>
                     </div>
@@ -17,9 +17,10 @@
                             :data="generalTableData"
                             :striped="true"
                             :hoverable="true"
+                            class="old-sports-text"
                             :mobile-cards="true">
 
-                                <template slot-scope="props">
+                                <template slot-scope="props" >
                                     <b-table-column field="strikes" label="Strikes" centered>
                                         {{ props.row.strikes }}
                                     </b-table-column>
@@ -72,13 +73,15 @@
                 generalTableData: [],
                 chartMatchOptions: {
                 	title: {
-                		text: 'Pinos por partida'
+                		text: 'Pinos por partida',
+                        style : {"font-family": 'OldSports'}
 					},
                 	yAxis: {
                 		title: {
                 			text: ''
                 		}
                 	},
+
             	 	credits: {
 						enabled: false
 					},
@@ -86,7 +89,8 @@
 				},
 				chartGamesOptions: {
                 	title: {
-                		text: 'Placar final'
+                		text: 'Placar final',
+                        style : {"font-family": 'OldSports'}
 					},
                 	yAxis: {
                 		title: {
@@ -236,11 +240,5 @@
     }
     .box {
         background-image: -webkit-gradient(linear, 0 100%, 0 0, from(orange), to(gold));
-    }
-    .sticky {
-    	position: -webkit-sticky;
-    	position: sticky;
-    	bottom: 0;
-    	z-index: 100;
     }
 </style>
