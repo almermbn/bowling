@@ -41,7 +41,7 @@
                                     </div>
                                 </div>
 
-                                <button class="button is-block is-dark is-large is-fullwidth" @click="doLogin" :disabled="loading">
+                                <button class="button is-block is-dark is-large is-fullwidth" type="button" @click="doLogin" :disabled="loading">
                                     <b-icon
                                         pack="fas"
                                         icon="sync-alt"
@@ -71,7 +71,7 @@
     
     <!-- CADASTRO -->
     <transition :name="transitionRegister">
-        <section class="hero is-fullheight animated" :class="transitionRegister" v-show="!isLogin" >
+        <section class="hero is-fullheight animated" :class="transitionRegister" v-show="isRegister" >
             <div class="hero-body">
                 <div class="container has-text-centered">
                     <div class="column is-4 is-offset-4">
@@ -145,7 +145,7 @@
                                     <small>* Campos obrigatórios</small>
                                 </div>
 
-                                <button class="button is-block is-dark is-large is-fullwidth" @click="doRegister" :disabled="loading">
+                                <button class="button is-block is-dark is-large is-fullwidth" type="button" @click="doRegister" :disabled="loading">
                                     <b-icon
                                         pack="fas"
                                         icon="sync-alt"
@@ -178,12 +178,13 @@
                 login: '',
                 pwd: '',
                 isLogin: true,
+                isRegister: false,
                 userRegister: '',
                 userPwd: '',
                 loggedIn: false,
                 loading: false,
                 transitionLogin: 'flipInY',
-                transitionRegister: 'flipOutY',
+                transitionRegister: 'flipInY',
                 userName: '',
                 userEmail: '',
                 userLastName: '',
@@ -211,17 +212,18 @@
             toggleRegister(){
                 var vm = this;
 
-                this.isLogin = !this.isLogin;
                 if(this.isLogin){
-                    this.transitionRegister = 'flipOutY';
+                    this.isLogin = !this.isLogin;
                     setTimeout(function() {
-                        vm.transitionLogin = 'flipInY';
-                    }, 700);
-                } else {
-                    this.transitionLogin = 'flipOutY';
+                        vm.isRegister = !vm.isRegister;
+                    }, 900);
+                }   
+
+                if(this.isRegister){
+                    this.isRegister = !this.isRegister;
                     setTimeout(function() {
-                        vm.transitionRegister = 'flipInY';
-                    }, 700);
+                        vm.isLogin = !vm.isLogin;
+                    }, 900);
                 }
             },
             doLogin(){
