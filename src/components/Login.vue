@@ -52,7 +52,7 @@
                                 </button>
                             </form>
                         </div>
-                        <div class="field">
+                        <div class="field" @click="fullLoading">
                             <g-signin-button
                                 :params="googleSignInParams"
                                 @success="onSignInSuccess"
@@ -180,6 +180,7 @@
                 isLogin: true,
                 isRegister: false,
                 userRegister: '',
+                loadingComponent: '',
                 userPwd: '',
                 loggedIn: false,
                 loading: false,
@@ -200,6 +201,7 @@
                 this.doGoogleRegister();
             },
             onSignInError (error) {
+                this.stopLoading();
                 this.danger('Falha na autenticação com a google.');
             },
             clearRegisterData(){
@@ -298,23 +300,23 @@
                 }
             },
             doGoogleLogin(_credentials){
+
                 this.$http.post(this.$remoteUrl + 'api/login', _credentials).then(response => {
                         var result = response.data;
 
                         if(result.saveOk){
                             localStorage.setItem('userLogin', JSON.stringify(response.data.object));
-                            this.loading = false;
                             this.success(result.message);
-                            this.loggedIn = true;
+                            this.stopLoading();
 
                             this.$router.push('/home');
                         } else {
                             this.danger(result.message);
-                            this.loading = false;
+                            this.stopLoading();
                         }
                     },function (response) {
                         console.log(response.data.message);
-                        this.loading = false;
+                        this.stopLoading();
                     });
             },
             doGoogleRegister(){
@@ -329,13 +331,17 @@
 
                 this.$http.post(this.$remoteUrl + 'api/register', credentials).then(response => {
                         var result = response.data;
-
-                        this.loading = false;
                         this.doGoogleLogin(credentials);
 
                     },function (response) {
-                        this.loading = false;
+                        this.stopLoading();
                     });
+            },
+            fullLoading(){
+                this.loadingComponent = this.$loading.open();
+            },
+            stopLoading(){
+                this.loadingComponent.close();
             },
             isValidLogin(){
                 if(!this.login){
