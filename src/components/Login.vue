@@ -8,7 +8,7 @@
                 <div class="container has-text-centered">
                     <div class="column is-4 is-offset-4">
                         <h3 class="title has-text-grey old-sports-text">Login</h3>
-                        <p class="subtitle has-text-grey old-sports-text"><small>Efetue seu login e senha para continuar.</small></p>
+                        <p class="subtitle has-text-grey old-sports-text"><small>Efetue seu login continuar.</small></p>
                         <div class="box">
                             <figure class="avatar">
                                 <img src="./../assets/logo.png">
@@ -51,6 +51,14 @@
                                     <span v-show="!loading" class="old-sports-text">Login</span>
                                 </button>
                             </form>
+                        </div>
+                        <div class="field">
+                            <g-signin-button
+                                :params="googleSignInParams"
+                                @success="onSignInSuccess"
+                                @error="onSignInError">
+                                <i class="fab fa-google-plus-square"></i> &nbsp;Login com o Google
+                            </g-signin-button>
                         </div>
                         <p class="button is-text">
                             <a @click="toggleRegister" class="old-sports-text">Cadastrar</a>
@@ -164,6 +172,9 @@
         name: 'Login',
         data () {
             return {
+                googleSignInParams: {
+                    client_id: '1053328724849-brrrvs33linuvotf20rc2bkvkikj2npq.apps.googleusercontent.com'
+                },
                 login: '',
                 pwd: '',
                 isLogin: true,
@@ -176,12 +187,20 @@
                 userName: '',
                 userEmail: '',
                 userLastName: '',
+                googleProfile: '',
             }
         },
         mounted(){
             this.checkExistentUser();
         },
         methods: {
+            onSignInSuccess (googleUser) {
+                this.googleProfile = googleUser.getBasicProfile();
+                this.doGoogleRegister();
+            },
+            onSignInError (error) {
+                this.danger('Falha na autenticação com a google.');
+            },
             clearRegisterData(){
                 this.userName = '';
                 this.userLastName = '';
@@ -276,6 +295,46 @@
                     });
                 }
             },
+            doGoogleLogin(_credentials){
+                this.$http.post(this.$remoteUrl + 'api/login', _credentials).then(response => {
+                        var result = response.data;
+
+                        if(result.saveOk){
+                            localStorage.setItem('userLogin', JSON.stringify(response.data.object));
+                            this.loading = false;
+                            this.success(result.message);
+                            this.loggedIn = true;
+
+                            this.$router.push('/home');
+                        } else {
+                            this.danger(result.message);
+                            this.loading = false;
+                        }
+                    },function (response) {
+                        console.log(response.data.message);
+                        this.loading = false;
+                    });
+            },
+            doGoogleRegister(){
+
+                var credentials = {
+                    user: this.googleProfile.getEmail(),
+                    pwd: this.googleProfile.getGivenName().toLowerCase() + '123',
+                    name: this.googleProfile.getGivenName(),
+                    lastName: this.googleProfile.getFamilyName(),
+                    email: this.googleProfile.getEmail()
+                }
+
+                this.$http.post(this.$remoteUrl + 'api/register', credentials).then(response => {
+                        var result = response.data;
+
+                        this.loading = false;
+                        this.doGoogleLogin(credentials);
+
+                    },function (response) {
+                        this.loading = false;
+                    });
+            },
             isValidLogin(){
                 if(!this.login){
                     this.$refs.login.focus();
@@ -368,5 +427,38 @@
     }
     .input:focus {
         border-color: #167df0 !important;
+    }
+    .g-signin-button {
+        font-family: 'OldSports';
+        display: flex;
+        width: 100%;
+        font-size: 1.5rem;
+        background-color: white;
+        border-width: 1px;
+        color: #363636;
+        cursor: pointer;
+        -webkit-box-pack: center;
+        -ms-flex-pack: center;
+        justify-content: center;
+        padding-bottom: calc(0.375em - 1px);
+        padding-left: 0.75em;
+        padding-right: 0.75em;
+        padding-top: calc(0.375em - 1px);
+        text-align: center;
+        white-space: nowrap;
+        -webkit-appearance: none;
+        -webkit-box-align: center;
+        align-items: center;
+        border: 1px solid #dbdbdb;
+        border-radius: 4px;
+        box-shadow: none;
+        height: 2.25em;
+        line-height: 1.5;
+        position: relative;
+        vertical-align: top;
+    }
+    .g-signin-button:hover {
+        border-color: #b5b5b5;
+        color: #363636;
     }
 </style>

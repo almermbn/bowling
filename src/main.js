@@ -8,10 +8,13 @@ import Buefy from 'buefy'
 import VueResource from "vue-resource"
 import HighchartsVue from 'highcharts-vue'
 import VueAnimateNumber from 'vue-animate-number'
+import GSignInButton from 'vue-google-signin-button'
+
 
 
 Vue.use(Buefy)
 Vue.use(VueResource)
+Vue.use(GSignInButton)
 Vue.use(HighchartsVue)
 Vue.use(VueAnimateNumber)
 
