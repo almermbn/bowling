@@ -58,8 +58,8 @@ exports.login_user = function(req, res) {
         }
 
         if(docs.length){
-            userResponse.message = 'Bem Vindo ' + userDoc.name;
             userResponse.object = docs[0];
+            userResponse.message = 'Bem Vindo ' + docs[0].name;
         } else {
             userResponse.saveOk = false;
             userResponse.message = 'Usuário ou senha inválidos';
