@@ -58,7 +58,7 @@ exports.login_user = function(req, res) {
         }
 
         if(docs.length){
-            userResponse.message = 'Bem Vindo ' + userDoc.user;
+            userResponse.message = 'Bem Vindo ' + userDoc.name;
             userResponse.object = docs[0];
         } else {
             userResponse.saveOk = false;

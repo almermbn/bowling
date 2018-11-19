@@ -27,11 +27,17 @@
             </div>
         </b-modal>
 
-       <!--  <nav class="navbar is-fixed-top"></nav> -->
         <nav class="navbar is-dark is-fixed-top" role="navigation" aria-label="main navigation" v-show="showBottomNavBar">
             <div class="navbar-end">
                 <div class="navbar-item navbar-center">
-                    <div class="buttons">
+                    <div class="buttons" style="justify-content: space-between;">
+                        <button class="button is-danger" @click="reportActive = true" >
+                            <b-icon
+                                pack="fas"
+                                icon="exclamation">
+                            </b-icon>
+                            <span>Problema?</span>
+                        </button>
                         <button class="button is-danger" >
                             <b-icon
                                 pack="fas"
@@ -40,13 +46,7 @@
                             <span >{{ credentials.name ? credentials.name:  credentials.user }}</span>
                         </button>
 
-                        <button class="button is-danger" @click="reportActive = true" >
-                            <b-icon
-                                pack="fas"
-                                icon="exclamation">
-                            </b-icon>
-                            <span>Problema?</span>
-                        </button>
+                        
                     </div>
 
                 </div>
@@ -58,7 +58,7 @@
         <nav class="navbar is-dark is-fixed-bottom" role="navigation" aria-label="main navigation" v-show="showBottomNavBar">
             <div class="navbar-end">
                 <div class="navbar-item navbar-center">
-                    <div class="buttons">
+                    <div class="buttons" style="justify-content: space-between;">
                         
                         <button class="button" @click="back" :disabled="backDisabled">
                             <b-icon
