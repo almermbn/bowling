@@ -7,8 +7,8 @@
             <div class="hero-body">
                 <div class="container has-text-centered">
                     <div class="column is-4 is-offset-4">
-                        <h3 class="title has-text-grey old-sports-text">Login</h3>
-                        <p class="subtitle has-text-grey old-sports-text"><small>Efetue seu login continuar.</small></p>
+                        <h3 class="title has-text-white old-sports-text">Login</h3>
+                        <p class="subtitle has-text-white old-sports-text"><small>Efetue seu login continuar.</small></p>
                         <div class="box">
                             <figure class="avatar">
                                 <img src="./../assets/logo.png">
@@ -61,7 +61,7 @@
                             </g-signin-button>
                         </div>
                         <p class="button is-text">
-                            <a @click="toggleRegister" class="old-sports-text">Cadastrar</a>
+                            <a @click="toggleRegister" class="old-sports-text has-text-white">Cadastrar</a>
                         </p>
                     </div>
                 </div>
@@ -75,8 +75,8 @@
             <div class="hero-body">
                 <div class="container has-text-centered">
                     <div class="column is-4 is-offset-4">
-                        <h3 class="title has-text-grey old-sports-text">Cadastrar</h3>
-                        <p class="subtitle has-text-grey old-sports-text"><small>Informe seus dados para o cadastro.</small></p>
+                        <h3 class="title has-text-white old-sports-text">Cadastrar</h3>
+                        <p class="subtitle has-text-white old-sports-text"><small>Informe seus dados para o cadastro.</small></p>
                         <div class="box">
                             <figure class="avatar">
                                 <img src="./../assets/logo.png">
@@ -157,7 +157,7 @@
                             </form>
                         </div>
                         <p class="button is-text">
-                            <a @click="toggleRegister" class="old-sports-text">Voltar</a>
+                            <a @click="toggleRegister" class="old-sports-text has-text-white">Voltar</a>
                         </p>
                     </div>
                 </div>
@@ -182,7 +182,6 @@
                 userRegister: '',
                 loadingComponent: '',
                 userPwd: '',
-                loggedIn: false,
                 loading: false,
                 transitionLogin: 'flipInY',
                 transitionRegister: 'flipInY',
@@ -246,7 +245,6 @@
                             localStorage.setItem('userLogin', JSON.stringify(response.data.object));
                             this.loading = false;
                             this.success(result.message);
-                            this.loggedIn = true;
 
                             this.$router.push('/home');
                         } else {
@@ -330,12 +328,12 @@
                 }
 
                 this.$http.post(this.$remoteUrl + 'api/register', credentials).then(response => {
-                        var result = response.data;
-                        this.doGoogleLogin(credentials);
+                    var result = response.data;
+                    this.doGoogleLogin(credentials);
 
-                    },function (response) {
-                        this.stopLoading();
-                    });
+                },function (response) {
+                    this.stopLoading();
+                });
             },
             fullLoading(){
                 this.loadingComponent = this.$loading.open();

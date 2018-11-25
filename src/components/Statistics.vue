@@ -4,7 +4,7 @@
         <div class="hero-body">
             <div class="container has-text-centered">
                 <div class="column is-4 is-offset-4">
-                    <h3 class="title has-text-grey old-sports-text">Estatísticas</h3>                    
+                    <h3 class="title has-text-white old-sports-text">Estatísticas</h3>                    
                     <div class="box" v-if="chartMatchOptions.series.length">
                         <highcharts :options="chartMatchOptions" :updateArgs="matchArgs"></highcharts>
                     </div>
@@ -43,7 +43,7 @@
                                 </template>
                         </b-table>
                     </div>
-                    <p class="heading" v-if="!chartGamesOptions.series.length && !chartMatchOptions.series.length">Você ainda não possui partidas registradas, comece a marcar :) !</p>
+                    <p class="heading has-text-white" v-if="!chartGamesOptions.series.length && !chartMatchOptions.series.length">Você ainda não possui partidas registradas, comece a marcar :) !</p>
                 </div>
             </div>
         </div>

@@ -38,7 +38,7 @@
                             </b-icon>
                             <span>Problema?</span>
                         </button>
-                        <button class="button is-danger" >
+                        <button class="button is-danger gradient" >
                             <b-icon
                                 pack="fas"
                                 icon="user">
@@ -52,9 +52,9 @@
                 </div>
             </div>
         </nav>
-        <transition name="fade">
+        <!-- <transition name="fade"> -->
             <router-view/></router-view>
-        </transition>
+        <!-- </transition> -->
         <nav class="navbar is-dark is-fixed-bottom" role="navigation" aria-label="main navigation" v-show="showBottomNavBar">
             <div class="navbar-end">
                 <div class="navbar-item navbar-center">
@@ -248,6 +248,10 @@
         font-family: 'OldSports';
     }
 
+    .gradient {
+        background-image: -webkit-gradient(linear, 0 100%, 0 0, from(orange), to(gold));
+    }
+
     .menu-sized {
         font-size: 16px;
     }
@@ -261,5 +265,38 @@
 
     body {
         font-family: 'Open Sans';
+        background-image: url(./assets/background.png);
+        background-size:     cover;
+        background-repeat:   no-repeat;
+        background-position: center center;              
+    }
+
+    i.shiny {
+        position: absolute;
+        opacity: 0;
+        top: 0;
+        left: 0;
+        background: -webkit-linear-gradient(left,  
+            rgba(255,255,255,0) 0%,
+            rgba(255,255,255,0.9) 1%,
+            rgba(255,255,255,0.9) 30%,
+            rgba(255,255,255,0.9) 50%,
+            rgba(255,255,255,0.9) 70%,
+            rgba(255,255,255,0.9) 71%,
+            rgba(255,255,255,0) 100%); 
+        width: 15%;
+        height: 100%;
+        transform: skew(-10deg,0deg);
+        animation: move 2s;
+        animation-iteration-count: infinite;
+        animation-delay: 1s;
+    }
+
+    @keyframes move {
+        0%  { left: 0; opacity: 0; }
+        5% { opacity: 0.45}
+        48% { opacity: 0.6}
+        80% { opacity: 0.0}
+        100% { left: 82%}
     }
 </style>

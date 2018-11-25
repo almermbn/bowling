@@ -9,14 +9,21 @@ import VueResource from "vue-resource"
 import HighchartsVue from 'highcharts-vue'
 import VueAnimateNumber from 'vue-animate-number'
 import GSignInButton from 'vue-google-signin-button'
-
-
+import Money from 'v-money'
+import * as VueGoogleMaps from "vue2-google-maps";
 
 Vue.use(Buefy)
+Vue.use(Money, {precision: 4})
 Vue.use(VueResource)
 Vue.use(GSignInButton)
 Vue.use(HighchartsVue)
 Vue.use(VueAnimateNumber)
+Vue.use(VueGoogleMaps, {
+	load: {
+		key: "AIzaSyAM2NqHKu-j55XZH83gnr74_g0ySTc83FE",
+		libraries: "places, visualization"
+	}
+})
 
 Vue.config.productionTip = false;
 Vue.prototype.$remoteUrl = "https://drbowling.herokuapp.com/";
