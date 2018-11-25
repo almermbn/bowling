@@ -4,7 +4,7 @@
         <div class="hero-body">
             <div class="container has-text-centered">
                 <div class="column is-4 is-offset-4">
-                    <h3 class="title has-text-grey old-sports-text">Registrar partida</h3>
+                    <h3 class="title has-text-white old-sports-text">Registrar partida</h3>
                     <div class="box list-item">
                         <b-field>
                             <transition name="fadeInDown" mode="out-in">
@@ -22,7 +22,7 @@
                             <p class="control">
                                 <b-input type="number" placeholder="5"  v-model="scoreTwo" :disabled="frameTable == 12 || tenSpare || matchComplete"></b-input>
                             </p>
-                             <p class="control">
+                            <p class="control">
                                 <button class="button is-dark old-sports-text" @click="confirmDialog()" :disabled="matchComplete">Ok</button>
                             </p>
                         </b-field>
@@ -42,11 +42,8 @@
                         </b-field>
                         <transition name="slideInLeft" mode="out-in">
                             <b-field v-if="matchComplete && tailedResults">
-                                <h1 class="title">
-                                    <h1 class="title">
-                                        <a class="button is-success is-large is-inverted old-sports-text"><animate-number from="0" :to="matchScore" duration="2000"></animate-number></a>
-                                    </h1>
-                                    
+                                <h1>
+                                    <a class="button is-success is-large is-inverted old-sports-text"><animate-number from="0" :to="matchScore" duration="2000" style="font-size:35px"></animate-number></a>
                                 </h1>
                             </b-field>
                         </transition> 
@@ -146,7 +143,7 @@
                     },
                 ],
                 loadingComponent: '',
-                askConfirmation: 'initial',
+                askConfirmation: true,
                 rolls: [],
                 rollIndex: 0,
                 currentRoll: 0,
@@ -365,7 +362,7 @@
                         frame++;
                         tempI = i + 1;
                     }
-                    tempFirst.name = this.credentials.user;
+                    tempFirst.name = this.credentials.name;
                     this.firstData.push(tempFirst);
 
 
@@ -391,7 +388,7 @@
                         }
                         frame++;
                     }
-                    tempSecond.name = this.credentials.user;
+                    tempSecond.name = this.credentials.name;
                     this.secondData.push(tempSecond);
 
                     this.tailedResults = true;

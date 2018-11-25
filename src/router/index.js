@@ -7,6 +7,7 @@ import PlayingArea from '@/components/PlayingArea'
 import Oils from '@/components/Oils'
 import RegisterMatch from '@/components/RegisterMatch'
 import Ranking from '@/components/Ranking'
+import Events from '@/components/Events'
 
 Vue.use(Router)
 
@@ -52,6 +53,12 @@ export default new Router({
         path: '/ranking',
         name: 'Ranking',
         component: Ranking,
+        mode: 'abstract'
+    },
+    {
+        path: '/events',
+        name: 'Events',
+        component: Events,
         mode: 'abstract'
     }
     ]

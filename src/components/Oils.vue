@@ -4,7 +4,7 @@
         <div class="hero-body">
             <div class="container has-text-centered">
                 <div class="column is-4 is-offset-4">
-                    <h3 class="title has-text-grey old-sports-text">Padrões de óleo</h3>
+                    <h3 class="title has-text-white old-sports-text">Padrões de óleo</h3>
                     
                     <div class="box list-item">
                         <p class="is-danger old-sports-text"> Em construção</p> 

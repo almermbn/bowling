@@ -19,12 +19,14 @@
     "mongoose": "^5.3.10",
     "node-sass": "^4.10.0",
     "sass-loader": "^7.1.0",
+    "v-money": "^0.8.1",
     "vue": "^2.5.2",
     "vue-animate-number": "^0.4.2",
     "vue-animate-transitions": "^1.0.0",
     "vue-google-signin-button": "^1.0.2",
     "vue-resource": "^1.5.1",
-    "vue-router": "^3.0.1"
+    "vue-router": "^3.0.1",
+    "vue2-google-maps": "^0.10.3"
   },
   "devDependencies": {
     "@fortawesome/fontawesome-free": "^5.5.0",

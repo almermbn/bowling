@@ -4,7 +4,7 @@
         <div class="hero-body">
             <div class="container has-text-centered">
                 <div class="column is-4 is-offset-4">
-                    <h3 class="title has-text-grey old-sports-text">Menu</h3>
+                    <h3 class="title has-text-white old-sports-text">Menu</h3>
                     <div class="box list-item">
                         <form>
                             <b-field>
@@ -40,6 +40,26 @@
                                 </a>
                             </b-field>
                             <b-field>
+                                <a class="button is-large  is-fullwidth" @click="goTo('/events')" v-if="credentials.level > 0 ">
+                                    <span class="icon">
+                                        <i class="fas fa-bullhorn"></i>
+                                    </span>
+                                    <span class="old-sports-text menu-sized">Criar Eventos</span>
+                                    &nbsp;
+                                    <b-tag type="is-danger" v-show="false">1</b-tag>
+                                </a>
+                            </b-field>
+                            <b-field>
+                                <a class="button is-large  is-fullwidth">
+                                    <span class="icon">
+                                        <i class="fas fa-list"></i>
+                                    </span>
+                                    <span class="old-sports-text menu-sized">Eventos</span>
+                                    &nbsp;
+                                    <b-tag type="is-danger" v-show="false">1</b-tag>
+                                </a>
+                            </b-field>
+                            <b-field>
                                 <a class="button is-large  is-fullwidth" @click="goTo('/ranking')">
                                     <span class="icon">
                                         <i class="fas fa-trophy"></i>
@@ -72,6 +92,9 @@
                 credentials: '',
             }
         },
+        mounted(){
+            this.credentials = this.getCurrentUser();
+        },
         methods: {
             danger(_msg) {
                 this.$toast.open({
@@ -86,6 +109,12 @@
                     message: 'Cadastro efetuado com sucesso!',
                     type: 'is-success'
                 })
+            },
+            getCurrentUser(){
+                var user = localStorage.getItem('userLogin');
+                if(user){
+                    return JSON.parse(user);
+                }
             },
             goTo(_route){
                 this.$router.push(_route);

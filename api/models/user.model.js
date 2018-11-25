@@ -30,6 +30,12 @@ var userChma = new User({
     },
     email: {
         type: String
+    },
+    level: {
+        type: Number
     }
+    //level
+    //90 admin
+    //10 normal user
 });
 module.exports = mongoose.model('User', userChma);
