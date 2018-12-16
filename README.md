@@ -13,3 +13,6 @@ Bowling web app.
 - node server.js
 - mongod
 - npm run dev
+
+# Dev Status
+- https://trello.com/b/RqRiOcxT/bowling
