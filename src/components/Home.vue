@@ -50,7 +50,7 @@
                                 </a>
                             </b-field>
                             <b-field>
-                                <a class="button is-large  is-fullwidth">
+                                <a class="button is-large  is-fullwidth"  @click="goTo('/eventsList')">
                                     <span class="icon">
                                         <i class="fas fa-list"></i>
                                     </span>

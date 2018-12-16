@@ -19,12 +19,12 @@ exports.register_user = function(req, res) {
         }
 
         var response = {
-            saveOk: true,
+            statusOk: true,
             message: ''
         }
 
         if(docs.length){
-            response.saveOk = false;
+            response.statusOk = false;
             response.message = 'Este usuário já existe';
         } else {
             userModel.save(function(err, msg) {
@@ -53,7 +53,7 @@ exports.login_user = function(req, res) {
         }
 
         var userResponse = {
-            saveOk: true,
+            statusOk: true,
             message: ''
         }
 
@@ -61,7 +61,7 @@ exports.login_user = function(req, res) {
             userResponse.object = docs[0];
             userResponse.message = 'Bem Vindo ' + docs[0].name;
         } else {
-            userResponse.saveOk = false;
+            userResponse.statusOk = false;
             userResponse.message = 'Usuário ou senha inválidos';
         }
 
@@ -80,7 +80,7 @@ exports.register_match = function(req, res) {
         }
 
         var response = {
-            saveOk: true,
+            statusOk: true,
             message: 'Partida salva!'
         }
 
@@ -102,7 +102,7 @@ exports.get_matches = function(req, res) {
         })
 
         var response = {
-            saveOk: true,
+            statusOk: true,
             message: '',
             object: docs[0].matches
         }

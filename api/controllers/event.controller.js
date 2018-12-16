@@ -13,7 +13,7 @@ exports.create_event = function(req, res) {
         }
 
         var response = {
-            saveOk: true,
+            statusOk: true,
             message: 'Evento criado com sucesso!'
         }
 
@@ -23,4 +23,22 @@ exports.create_event = function(req, res) {
 };
 
 exports.list_events = function(req, res) {
+
+    Event.find({ date: { $gte: new Date() } }, null, null, function (err, docs) {
+        if (err){
+            res.send(err);
+        }
+
+        docs.sort(function(a, b) { 
+            return a.date - b.date;
+        })
+
+        var response = {
+            statusOk: true,
+            message: '',
+            object: docs
+        }
+
+        res.json( response );
+    });
 };

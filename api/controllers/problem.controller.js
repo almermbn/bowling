@@ -18,7 +18,7 @@ exports.report_problem = function(req, res) {
         }
 
         var response = {
-            saveOk: true,
+            statusOk: true,
             message: 'Obrigado pela colaboração!'
         }
 

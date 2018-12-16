@@ -204,7 +204,7 @@
                     this.$http.post(this.$remoteUrl + 'api/registerMatch', match).then(response => {
                         var result = response.data;
 
-                        if(result.saveOk){
+                        if(result.statusOk){
                             this.success(result.message);
                             this.loading = false;
                             this.resetGame();

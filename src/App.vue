@@ -173,7 +173,7 @@
                 this.$http.post(this.$remoteUrl + 'api/reportProblem', problem).then(response => {
                     var result = response.data;
 
-                    if(result.saveOk){
+                    if(result.statusOk){
                         localStorage.setItem('userLogin', JSON.stringify(response.data.object));
                         this.isLoading = false;
                         this.reportActive = false;

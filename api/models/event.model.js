@@ -24,7 +24,7 @@ var eventSchma = new Event({
 	    type: Number
 	},
 	max: {
-	    type: String
+	    type: Number
 	},
 	description: {
 	    type: String
