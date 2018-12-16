@@ -219,10 +219,13 @@
 
                     dateFormat.masks.hoursFormat = 'HH:MM';
 
+                    this.eData.setHours(this.$refs.eventTimeRef.dateSelected.getHours());
+                    this.eData.setMinutes(this.$refs.eventTimeRef.dateSelected.getMinutes());
+
                     var event = {
                         name: this.eName,
                         time: dateFormat(this.eTime, "hoursFormat"),
-                        date: this.$refs.eventTimeRef.dateSelected,
+                        date: this.eData,
                         local: this.ePlace,
                         localCoordinates: this.markers[0].position,
                         price: this.ePrice,
@@ -231,6 +234,7 @@
                         description: this.eDesc,
                         owner: this.getCurrentUser().name
                     }
+                    debugger;
                     
                     this.fullLoading();
 

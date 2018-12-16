@@ -8,6 +8,7 @@ import Oils from '@/components/Oils'
 import RegisterMatch from '@/components/RegisterMatch'
 import Ranking from '@/components/Ranking'
 import Events from '@/components/Events'
+import EventsList from '@/components/EventsList'
 
 Vue.use(Router)
 
@@ -59,6 +60,12 @@ export default new Router({
         path: '/events',
         name: 'Events',
         component: Events,
+        mode: 'abstract'
+    },
+    {
+        path: '/eventsList',
+        name: 'EventsList',
+        component: EventsList,
         mode: 'abstract'
     }
     ]

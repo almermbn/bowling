@@ -1,12 +1,12 @@
 <template>
 
 <div id="wrapper">
-    <!-- LOGIN -->
-    <transition :name="transitionLogin">
-        <section class="hero is-fullheight animated" :class="transitionLogin" v-show="isLogin">
-            <div class="hero-body">
-                <div class="container has-text-centered">
-                    <div class="column is-4 is-offset-4">
+    <section class="hero is-fullheight">
+        <div class="hero-body">
+            <div class="container has-text-centered">
+                <!-- LOGIN -->
+                <transition :name="transitionLogin">
+                    <div class="column is-4 is-offset-4 animated" :class="transitionLogin" v-show="isLogin">
                         <h3 class="title has-text-white old-sports-text">Login</h3>
                         <p class="subtitle has-text-white old-sports-text"><small>Efetue seu login continuar.</small></p>
                         <div class="box">
@@ -64,17 +64,11 @@
                             <a @click="toggleRegister" class="old-sports-text has-text-white">Cadastrar</a>
                         </p>
                     </div>
-                </div>
-            </div>
-        </section>
-    </transition>
-    
-    <!-- CADASTRO -->
-    <transition :name="transitionRegister">
-        <section class="hero is-fullheight animated" :class="transitionRegister" v-show="isRegister" >
-            <div class="hero-body">
-                <div class="container has-text-centered">
-                    <div class="column is-4 is-offset-4">
+                </transition>
+
+                <!-- CADASTRO -->
+                <transition :name="transitionRegister">
+                    <div class="column is-4 is-offset-4"  :class="transitionRegister" v-show="isRegister">
                         <h3 class="title has-text-white old-sports-text">Cadastrar</h3>
                         <p class="subtitle has-text-white old-sports-text"><small>Informe seus dados para o cadastro.</small></p>
                         <div class="box">
@@ -160,10 +154,10 @@
                             <a @click="toggleRegister" class="old-sports-text has-text-white">Voltar</a>
                         </p>
                     </div>
-                </div>
+                </transition>
             </div>
-        </section>
-    </transition>
+        </div>
+    </section>
 </div>
 </template>
 
@@ -217,14 +211,14 @@
                     this.isLogin = !this.isLogin;
                     setTimeout(function() {
                         vm.isRegister = !vm.isRegister;
-                    }, 900);
+                    }, 700);
                 }   
 
                 if(this.isRegister){
                     this.isRegister = !this.isRegister;
                     setTimeout(function() {
                         vm.isLogin = !vm.isLogin;
-                    }, 900);
+                    }, 700);
                 }
             },
             doLogin(){
@@ -241,7 +235,7 @@
                     this.$http.post(this.$remoteUrl + 'api/login', credentials).then(response => {
                         var result = response.data;
 
-                        if(result.saveOk){
+                        if(result.statusOk){
                             localStorage.setItem('userLogin', JSON.stringify(response.data.object));
                             this.loading = false;
                             this.success(result.message);
@@ -277,7 +271,7 @@
                     this.$http.post(this.$remoteUrl + 'api/register', credentials).then(response => {
                         var result = response.data;
 
-                        if(result.saveOk){
+                        if(result.statusOk){
 
                             this.toggleRegister();
                             this.login = credentials.user;
@@ -302,7 +296,7 @@
                 this.$http.post(this.$remoteUrl + 'api/login', _credentials).then(response => {
                         var result = response.data;
 
-                        if(result.saveOk){
+                        if(result.statusOk){
                             localStorage.setItem('userLogin', JSON.stringify(response.data.object));
                             this.success(result.message);
                             this.stopLoading();
