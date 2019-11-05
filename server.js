@@ -2,10 +2,6 @@ var express = require('express'),
 app = express(),
 port = process.env.PORT || 3000,
 mongoose = require('mongoose'),
-user = require('./api/models/user.model'),
-match = require('./api/models/match.model'),
-problem = require('./api/models/problem.model'),
-event = require('./api/models/event.model'),
 bodyParser = require('body-parser');
 
 mongoose.Promise = global.Promise;
@@ -32,16 +28,6 @@ app.use((req, res, next) => {
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
-
-var userRoutes = require('./api/routes/user.routes');
-var matchRoutes = require('./api/routes/match.routes');
-var problemRoutes = require('./api/routes/problem.routes');
-var eventRoutes = require('./api/routes/event.routes');
-
-userRoutes(app);
-matchRoutes(app);
-problemRoutes(app);
-eventRoutes(app);
 
 app.listen(port);
 console.log('Server started on: ' + port);

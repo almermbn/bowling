@@ -11,8 +11,8 @@
                 <li class="contacts"><i class="fas fa-envelope"></i> <a href="#">contact@maktub.com</a></li>
             </ul>
         </div>
-        <div class="">
-            <b-navbar>
+        <div>
+            <b-navbar mobile-burger wrapper-class="wrapper-nav">
                 <template slot="brand">
                     <b-navbar-item tag="router-link" :to="{ path: '/' }">
                         <img
@@ -23,24 +23,25 @@
                 </template>
                 <template slot="end">
                     <b-navbar-item href="#">
-                        Quem Somos
+                        Empresa
                     </b-navbar-item>
                     <b-navbar-item href="#">
-                        Infraestrutura
+                        Missão
                     </b-navbar-item>
                     <b-navbar-item href="#">
-                        Serviços
+                        Instalações
                     </b-navbar-item>
                     <b-navbar-item href="#">
                         Unidades
                     </b-navbar-item>
                     <b-navbar-item href="#">
-                        Contato
+                        Tecnologia
                     </b-navbar-item>
                 </template>
             </b-navbar>
         </div>
         
+        <!-- renders current route node-->
         <router-view/></router-view>
 
     </div>
@@ -97,6 +98,15 @@
 
     a.navbar-item:focus, a.navbar-item:focus-within, a.navbar-item:hover, a.navbar-item.is-active, .navbar-link:focus, .navbar-link:focus-within, .navbar-link:hover, .navbar-link.is-active {
         color: #e72727;
+    }
+
+    @media (min-width: 1281px) { 
+        .wrapper-nav {
+            display: flex;
+            justify-content: space-around !important;
+            padding: 0 10%;
+            width: 100%
+        }
     }
 
     /* Medium screens */

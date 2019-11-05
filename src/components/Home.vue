@@ -1,7 +1,9 @@
 <template>
 <div id="wrapper">
-    <section class="hero is-fullheight">
-        
+    <section >
+        <div class="main">
+         asdasdas
+        </div>
     </section>
 </div>  
 </template>
@@ -14,29 +16,19 @@
                 
             }
         },
-        mounted(){
-            
-        },
         methods: {
             
-           
         }
     }
 </script>
 
-<style scoped>
-    h1, h2 {
-        font-weight: normal;
+<style>
+    .main {
+        background: url(../assets/home.jpg) no-repeat center top;
+        background-size: cover;
+        position: relative;
+        z-index: 1;
     }
-    ul {
-        list-style-type: none;
-        padding: 0;
-    }
-    li {
-        display: inline-block;
-        margin: 0 10px;
-    }
-    .box {
-        background-image: -webkit-gradient(linear, 0 100%, 0 0, from(orange), to(gold));
-    }
+   
 </style>
+
