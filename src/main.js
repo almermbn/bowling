@@ -4,19 +4,20 @@ import Vue from 'vue'
 import App from './App'
 import router from './router'
 
-import Buefy from 'buefy'
 import VueResource from "vue-resource"
 import HighchartsVue from 'highcharts-vue'
 import VueAnimateNumber from 'vue-animate-number'
 import GSignInButton from 'vue-google-signin-button'
 import Money from 'v-money'
+import BootstrapVue from 'bootstrap-vue'
 
-Vue.use(Buefy)
+
 Vue.use(Money, {precision: 4})
 Vue.use(VueResource)
 Vue.use(GSignInButton)
 Vue.use(HighchartsVue)
 Vue.use(VueAnimateNumber)
+Vue.use(BootstrapVue)
 
 
 Vue.config.productionTip = false;
