@@ -1,7 +1,7 @@
 <template>
 <div id="wrapper">
-    <section >
-        <div class="main">
+    <section class="hero is-fullheight">
+        <div class="hero-body">
          asdasdas
         </div>
     </section>
@@ -23,11 +23,8 @@
 </script>
 
 <style>
-    .main {
-        background: url(../assets/home.jpg) no-repeat center top;
-        background-size: cover;
-        position: relative;
-        z-index: 1;
+    .hero-body {
+        background: url(../assets/home.jpg) no-repeat center top
     }
    
 </style>
