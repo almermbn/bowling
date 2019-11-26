@@ -10,6 +10,9 @@ import VueAnimateNumber from 'vue-animate-number'
 import GSignInButton from 'vue-google-signin-button'
 import Money from 'v-money'
 import BootstrapVue from 'bootstrap-vue'
+import vueSmoothScroll from 'vue2-smooth-scroll'
+
+
 
 
 Vue.use(Money, {precision: 4})
@@ -18,6 +21,7 @@ Vue.use(GSignInButton)
 Vue.use(HighchartsVue)
 Vue.use(VueAnimateNumber)
 Vue.use(BootstrapVue)
+Vue.use(vueSmoothScroll)
 
 
 Vue.config.productionTip = false;

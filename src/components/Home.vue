@@ -16,7 +16,7 @@
                                         very confused at the difference in price You may see some
                                         for as low as each.
                                     </p>
-                                    <a class="main_btn mt-md-0 mt-4" href="#">Explore More</a>
+                                    <a class="main_btn mt-md-0 mt-4">Explore More</a>
                                 </div>
                             </div>
                         </div>
@@ -262,7 +262,7 @@
                 <div class="row justify-content-center text-left section-title-wrap">
                     <div class="col-lg-12">
                         <h5>Get a quote now!</h5>
-                        <h2 class="text-white">
+                        <h2 class="text-white" id="toHere">
                             Check the estimated cost for <br>
                             your requesting goods
                         </h2>

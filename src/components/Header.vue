@@ -7,22 +7,22 @@
                     <div class="float-left">
                         <ul class="left_side">
                             <li>
-                                <a href="login.html">
+                                <a href="#">
                                     <i class="fab fa-facebook-f"></i>
                                 </a>
                             </li>
                             <li>
-                                <a href="login.html">
+                                <a href="#">
                                     <i class="fab fa-twitter"></i>
                                 </a>
                             </li>
                             <li>
-                                <a href="login.html">
+                                <a href="#">
                                     <i class="fab fa-dribbble"></i>
                                 </a>
                             </li>
                             <li>
-                                <a href="login.html">
+                                <a href="#">
                                     <i class="fab fa-behance"></i>
                                 </a>
                             </li>
@@ -31,7 +31,7 @@
                     <div class="float-right">
                         <ul class="right_side">
                             <li>
-                                <a href="login.html">
+                                <a href="#">
                                     <i class="fas fa-phone"></i>
                                     012-6532-568-9746
                                 </a>
@@ -95,7 +95,7 @@
                                             <a class="nav-link" href="contact.html">Serviços</a>
                                         </li>
                                         <li class="nav-item">
-                                            <a class="nav-link" href="contact.html">Central De Relacionamento</a>
+                                            <a class="nav-link" href="#toHere" v-smooth-scroll>Central De Relacionamento</a>
                                         </li>
                                         
                                     </ul>
