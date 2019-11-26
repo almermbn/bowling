@@ -12,11 +12,11 @@
                         <div class="col-lg-6 col-md-6">
                             <div class="single-feature">
                                 <img src="../assets/img/feature/f1.png" alt="">
-                                <h4>Shipment Tracking</h4>
+                                <h4>RASTREIO</h4>
                                 <p>
-                                    The French Revolutioncons tituted for the conscience of the dominant the French Revolutioncons.
+                                    EM BREVE - Faça o Rastreio de suas encomendas aqui.
                                 </p>
-                                <a href="#">Find your cargo</a>
+                                <a href="#">Rastrei sua Encomenda</a>
                             </div>
                         </div>
                         <div class="col-lg-6 col-md-6">
@@ -26,7 +26,7 @@
                                 <p>
                                     The French Revolutioncons tituted for the conscience of the dominant the French Revolutioncons.
                                 </p>
-                                <a href="#">Contact Us</a>
+                                <a href="#">Fale Conosco</a>
                             </div>
                         </div>
                         <div class="col-lg-6 col-md-6">
@@ -42,11 +42,11 @@
                         <div class="col-lg-6 col-md-6">
                             <div class="single-feature">
                                 <img src="../assets/img/feature/f4.png" alt="">
-                                <h4>Shipping Calculator</h4>
+                                <h4>Simule a Cotação do Frete</h4>
                                 <p>
-                                    The French Revolutioncons tituted for the conscience of the dominant the French Revolutioncons.
+                                    EM BREVE - Faça aqui sua cotação de frete.
                                 </p>
-                                <a href="#">Get Estimate</a>
+                                <a href="#">Simular Cotação</a>
                             </div>
                         </div>
                     </div>

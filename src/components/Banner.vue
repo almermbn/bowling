@@ -12,7 +12,7 @@
                             </div>
                             <div class="banner-right position-relative">
                                 <p>
-                                    If you are looking at blank cassettes on the web, you may be very confused.
+                                    Transportando com segurança por todo o Brasil!
                                 </p>
                                 <span class="main_btn mt-4 mt-md-0" href="#">
                                     <a href="index.html" class="text-white">Maktub</a> 

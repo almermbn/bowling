@@ -65,7 +65,7 @@
                                 <div class="col-lg-12 pr-lg-0">
                                     <ul class="nav navbar-nav ml-auto justify-content-end">
                                         <li class="nav-item">
-                                            <a class="nav-link" @click="goTo('/')">Início</a>
+                                            <a class="nav-link" @click="goTo('/')">Home</a>
                                         </li>
                                         <li class="nav-item">
                                             <a class="nav-link" @click="goTo('/company')">Empresa</a>

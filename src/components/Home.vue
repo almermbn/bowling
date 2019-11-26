@@ -8,13 +8,11 @@
                         <div class="col-lg-7">
                             <div class="banner_content d-flex flex-md-row flex-column">
                                 <div class="banner-left text-md-right">
-                                    <h1 class="text-uppercase">Solid Super Service</h1>
+                                    <h1 class="text-uppercase"> MAKTUB </h1>
                                 </div>
                                 <div class="banner-right position-relative">
                                     <p>
-                                        If you are looking at blank cassettes on the web, you may be
-                                        very confused at the difference in price You may see some
-                                        for as low as each.
+                                        Transportando com segurança por todo o Brasil!
                                     </p>
                                     <a class="main_btn mt-md-0 mt-4">Explore More</a>
                                 </div>
@@ -35,19 +33,19 @@
                             <div class="col-lg-6 col-md-6">
                                 <div class="single-feature">
                                     <img src="../assets/img/feature/f1.png" alt="">
-                                    <h4>Shipment Tracking</h4>
+                                    <h4>RASTREIO</h4>
                                     <p>
-                                        The French Revolutioncons tituted for the conscience of the dominant the French Revolutioncons.
+                                        EM BREVE - Faça o Rastreio de suas encomendas aqui.
                                     </p>
-                                    <a href="#">Find your cargo</a>
+                                    <a href="#">Rastrei sua Encomenda</a>
                                 </div>
                             </div>
                             <div class="col-lg-6 col-md-6">
                                 <div class="single-feature">
                                     <img src="../assets/img/feature/f2.png" alt="">
-                                    <h4>Have a Question?</h4>
+                                    <h4>Dúvidas?</h4>
                                     <p>
-                                        The French Revolutioncons tituted for the conscience of the dominant the French Revolutioncons.
+                                        EM BREVE - Tire suas dúvidas com nossa equipe especializada.
                                     </p>
                                     <a href="#">Contact Us</a>
                                 </div>
@@ -65,11 +63,11 @@
                             <div class="col-lg-6 col-md-6">
                                 <div class="single-feature">
                                     <img src="../assets/img/feature/f4.png" alt="">
-                                    <h4>Shipping Calculator</h4>
+                                    <h4>Simule a Cotação do Frete</h4>
                                     <p>
-                                        The French Revolutioncons tituted for the conscience of the dominant the French Revolutioncons.
+                                        EM BREVE - Faça aqui sua cotação de frete.
                                     </p>
-                                    <a href="#">Get Estimate</a>
+                                    <a href="#">Simular Cotação</a>
                                 </div>
                             </div>
                         </div>
