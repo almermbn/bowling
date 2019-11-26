@@ -1,7 +1,7 @@
 <template>
     <div id="wrapper-header">
         <!--================Header Menu Area =================-->
-        <header class="header_area">
+        <header class="header_area" :class="navFixed ? 'navbar_fixed' : ''">
             <div class="top_menu d-lg-block d-none">
                 <div class="container">
                     <div class="float-left">
@@ -115,15 +115,29 @@
         name: 'Header',
         data () {
             return {
-                
+                navFixed: false
             }
+        },
+        mounted() {
+            window.addEventListener('scroll', this.updateScroll);
         },
         methods: {
             goTo(_route){
                 if(this.$router.currentRoute.path != _route){
                     this.$router.push(_route);
                 }
-            }
+            },
+            updateScroll(){
+                var scroll = window.scrollY;
+                var headerHeight = 125;
+                this.scrollPosition = window.scrollY;
+
+                if (scroll >= headerHeight) {
+                    this.navFixed = true;
+                } else {
+                    this.navFixed = false;
+                }
+            }    
         }
     }
 </script>
