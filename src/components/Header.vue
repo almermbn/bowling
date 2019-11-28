@@ -33,13 +33,13 @@
                             <li>
                                 <a href="#">
                                     <i class="fas fa-phone"></i>
-                                    012-6532-568-9746
+                                    (31)3370-7736 / (31) 3370-7738
                                 </a>
                             </li>
                             <li>
                                 <a href="#">
                                     <i class="fas fa-envelope"></i>
-                                    contato@maktub.com
+                                    comercialbhz@expressomaktub.com.br
                                 </a>
                             </li>
                         </ul>
@@ -71,10 +71,13 @@
                                             <a class="nav-link" @click="goTo('/company')">Empresa</a>
                                         </li>
                                         <li class="nav-item ">
-                                            <a class="nav-link" href="about.html">Missão</a>
+                                            <a class="nav-link" href="#toMission" v-smooth-scroll>Missão</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="#toTec" v-smooth-scroll>Área de Atuação</a>
                                         </li>
                                         <li class="nav-item ">
-                                            <a class="nav-link" href="services.html">Unidades</a>
+                                            <a class="nav-link" href="#toUnits" v-smooth-scroll>Unidades</a>
                                         </li>
                                         <!-- <li class="nav-item submenu dropdown">
                                             <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
@@ -86,16 +89,13 @@
                                             </ul>
                                         </li> -->
                                         <li class="nav-item">
-                                            <a class="nav-link" href="contact.html">Instalações</a>
+                                            <a class="nav-link" href="#toInstall" v-smooth-scroll>Instalações</a>
                                         </li>
                                         <li class="nav-item">
-                                            <a class="nav-link" href="contact.html">Tecnologia</a>
+                                            <a class="nav-link" href="#toService" v-smooth-scroll>Serviços</a>
                                         </li>
                                         <li class="nav-item">
-                                            <a class="nav-link" href="contact.html">Serviços</a>
-                                        </li>
-                                        <li class="nav-item">
-                                            <a class="nav-link" href="#toHere" v-smooth-scroll>Central De Relacionamento</a>
+                                            <a class="nav-link" href="#toCR" v-smooth-scroll>Central de Relacionamento</a>
                                         </li>
                                         
                                     </ul>
