@@ -30,13 +30,12 @@
 
 <style lang="scss">
     @import url('../node_modules/animate.css/animate.min.css');
-    @import url('../node_modules/animate.css/animate.min.css');
     @import url('../node_modules/@fortawesome//fontawesome-free/css/all.css');
     @import url('../node_modules/vue-animate-transitions/dist/vue-animate-transitions.min.css');
     
     @import 'node_modules/bootstrap/scss/bootstrap';
     @import 'node_modules/bootstrap-vue/src/index.scss';
 
-    @import './assets/scss/style.scss'
-    //@import './assets/css/responsive.css'
+    @import './assets/scss/style.scss';
+    @import './assets/css/responsive.css';
 </style>

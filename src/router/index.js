@@ -18,6 +18,6 @@ export default new Router({
         name: 'Company',
         component: Company,
         mode: 'abstract'
-    },
-    ]
+    }
+]
 })
