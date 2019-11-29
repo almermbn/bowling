@@ -147,7 +147,7 @@
                                             <div>
                                                 <img src="../assets/img/about/i1.png" alt="">
                                             </div>
-                                            <h3><span v-countUp:onWindowScroll.once="{ startValue: 0, endValue: 2500, options: { duration: 2 } }"></span>+</h3>
+                                            <h3><span class="counter">2500</span>+</h3>
                                             <p>Pacotes Entregues</p>
                                         </div>
                                     </div>
