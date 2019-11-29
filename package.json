@@ -1,7 +1,7 @@
 {
-  "name": "bowling",
+  "name": "maktub",
   "version": "1.0.0",
-  "description": "bowling project",
+  "description": "maktub project",
   "author": "Almer Nakano <almer.nakano@gmail.com>",
   "private": true,
   "scripts": {
@@ -26,6 +26,7 @@
     "vue-animate-number": "^0.4.2",
     "vue-animate-transitions": "^1.0.0",
     "vue-google-signin-button": "^1.0.2",
+    "vue-owl-carousel": "^2.0.3",
     "vue-resource": "^1.5.1",
     "vue-router": "^3.0.1",
     "vue2-google-maps": "^0.10.3",

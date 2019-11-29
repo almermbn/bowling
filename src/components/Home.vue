@@ -73,7 +73,7 @@
                         </div>
                     </div>
 
-                    <div class="col-lg-5 offset-md-0 col-md-12 text-left section-title-wrap mt-4 mt-lg-0">
+                    <div class="col-lg-5 offset-md-0 col-md-12 text-left section-title-wrap mt-4 mt-lg-0" id="toCompany">
                         <h5>Quem Somos</h5>
                         <h2>
                             EXPRESSO MAKTUB
@@ -147,7 +147,7 @@
                                             <div>
                                                 <img src="../assets/img/about/i1.png" alt="">
                                             </div>
-                                            <h3><span class="counter">2500</span>+</h3>
+                                            <h3><span v-countUp:onWindowScroll.once="{ startValue: 0, endValue: 2500, options: { duration: 2 } }"></span>+</h3>
                                             <p>Pacotes Entregues</p>
                                         </div>
                                     </div>
@@ -187,97 +187,6 @@
             </div>
         </section>
         <!--================ End About Area =================-->
-		
-        <!--================ Start Testimonial Area =================-->
-        <section class="testimonial-area section_gap_top">
-            <div class="container">
-                <div class="row justify-content-center section-title-wrap">
-                    <div class="col-lg-12">
-                        <h5>ÁREA DE ATUAÇÃO</h5>
-                    </div>
-                </div>
-                <div class="row justify-content-center">
-                    <div class="col-lg-8">
-                        <div class="owl-carousel active_testimonial">
-                            <!-- single testi -->
-                            <div class="single_testi">
-                                <div class="Área de Atuação">
-								<h4>ÁREA DE ATUAÇÃO</h4>
-                                    <p>
-                                        A Expresso MAKTUB é uma empresa sólida. Fundada em 1997 conta com profissionais qualificados e com ampla experiência
-										em transporte de cargas.
-										Sua matriz administrativa em Belo Horizonte-MG conta com
-										unidade operacional e proporciona atendimento para todo o
-										estado de Minas Gerais, Goiás, DF, região nordeste e sul do
-										país, além da macrorregião de Franca-SP.
-                                    </p>
-                                </div>
-                                <div class="testi_author d-flex justify-content-center align-items-center">
-                                    <div class="thumb mr-4"><img src="../assets/img/testi-author.png" alt=""></div>
-                                </div>
-                            </div>
-                            <!-- single testi -->
-                            <div class="single_testi">
-							<h4>MISSÃO</h4>
-                                <div class="Missão" id="toMission">
-									<p>
-                                    "Somos especialistas em soluções de transporte.
-									Nosso foco é a execução de serviços expressos através
-									de pessoal qualificado seja no transporte de
-									transferência, distribuição ou logística"
-                                    </p>
-                                </div>
-                                <div class="testi_author d-flex justify-content-center align-items-center">
-                                    <div class="thumb mr-4"><img src="../assets/img/testi-author.png" alt=""></div>
-                                    <div class="a-desc text-left">
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-        <!--================ end Testimonial Area =================-->
-		
-	
-		
-        <!--================ Start Testimonial Area =================-->
-        <section class="testimonial-area section_gap_top2">
-            <div class="container">
-                <div class="row justify-content-center section-title-wrap">
-                    <div class="col-lg-12">
-                        <h5 id="toInstall">Instalações</h5>
-                        <h4>
-                            Confira nossas Tecnologias empregadas:
-                        </h4>
-                    </div>
-                </div>
-                <div class="row justify-content-center">
-                    <div class="col-lg-8">
-                        <div class="owl-carousel active_testimonial">
-                            <!-- single testi -->
-                            <div class="single_testi">
-                                <div class="AreaAtuacao">
-                                    <p>
-                                    Toda a frota é rastreada via satélite 24 horas e equipada com rádio de comunicação permitindo um
-									monitoramento preciso e em tempo real.
-									TODAS AS UNIDADES POSSUEM: 
-									<br>Circuito interno de CFTV | Empilhadeiras | 
-									| Gaiolas metálicas para melhor acomodação de cargas 
-									<br>VEÍCULOS:</br>
-									| Carretas Baú | Veículos Médios | Veículos Leves | VUC
-                                    </p>
-                                </div>
-                                <div class="testi_author d-flex justify-content-center align-items-center">
-                                    <div class="thumb mr-4"><img src="../assets/img/tecnologia.png" alt=""></div>
-                                </div>                                
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
 
         <!--================ Start Service Area =================-->
         <section class="service-area section_gap_top">
@@ -301,7 +210,7 @@
                             </h3>
                             <p>
                                 Dispomos de uma frota moderna para distribuição de mercadorias e atendimento nas transferência
-								de produtos entre unidades e centros de distribuição em todos os estados da federação.
+                                de produtos entre unidades e centros de distribuição em todos os estados da federação.
                             </p>
                         </div>
                     </div>
@@ -316,9 +225,9 @@
                             </h3>
                             <p>
                                 Destinado a distribuição de mercadorias através do uso de veículos leves, que garantem a rapidez
-								necessária para a sua operação.
-								
-								
+                                necessária para a sua operação.
+                                
+                                
                             </p>
                         </div>
                     </div>
@@ -333,10 +242,10 @@
                             </h3>
                             <p>
                                 Nossa expertise em distribuição assegura aos clientes de E-COMMERCE a confiabilidade e a certeza
-								de um atendimento qualificado.
+                                de um atendimento qualificado.
                             
-							
-							</p>
+                            
+                            </p>
                         </div>
                     </div>
                 </div>
@@ -418,7 +327,78 @@
             </div>
         </section>
         <!--================ End Quote Area =================-->
+		
+        <!--================ Start Testimonial Area =================-->
+        <section class="testimonial-area section_gap_top" id="toMission">
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-lg-8">
+                        <carousel 
+                            :autoplay="true" 
+                            :items="1" 
+                            :dots="false" 
+                            :loop="true" 
+                            :nav="true"
+                            :autoplayTimeout="2500">
+                            
+                            <div class="single_testi">
+                                <div>
+                                <h4>ÁREA DE ATUAÇÃO</h4>
+                                    <p>
+                                        A Expresso MAKTUB é uma empresa sólida. Fundada em 1997 conta com profissionais qualificados e com ampla experiência
+                                        em transporte de cargas.
+                                        Sua matriz administrativa em Belo Horizonte-MG conta com
+                                        unidade operacional e proporciona atendimento para todo o
+                                        estado de Minas Gerais, Goiás, DF, região nordeste e sul do
+                                        país, além da macrorregião de Franca-SP.
+                                    </p>
+                                </div>
+                                <div class="testi_author d-flex justify-content-center align-items-center">
+                                    <div class="thumb mr-4"><img src="../assets/img/testi-author.png" alt=""></div>
+                                </div>
+                            </div>
+                            <!-- single testi -->
+                            <div class="single_testi">
+                                <h4>MISSÃO</h4>
+                                <div>
+                                    <p>
+                                    "Somos especialistas em soluções de transporte.
+                                    Nosso foco é a execução de serviços expressos através
+                                    de pessoal qualificado seja no transporte de
+                                    transferência, distribuição ou logística"
+                                    </p>
+                                </div>
+                                <div class="testi_author d-flex justify-content-center align-items-center">
+                                    <div class="thumb mr-4"><img src="../assets/img/testi-author.png" alt=""></div>
+                                    <div class="a-desc text-left">
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- single testi -->
+                            <div class="single_testi">
+                                <h4>TECNOLOGIA</h4>
+                                <div>
+                                    <p>
+                                    Toda a frota é rastreada via satélite 24 horas e equipada com rádio de comunicação permitindo um
+                                    monitoramento preciso e em tempo real.
+                                    TODAS AS UNIDADES POSSUEM: 
+                                    <br>Circuito interno de CFTV | Empilhadeiras | 
+                                    | Gaiolas metálicas para melhor acomodação de cargas 
+                                    <br>VEÍCULOS:</br>
+                                    | Carretas Baú | Veículos Médios | Veículos Leves | VUC
+                                    </p>
+                                </div>
+                                <div class="testi_author d-flex justify-content-center align-items-center">
+                                    <div class="thumb mr-4"><img src="../assets/img/testi-author.png" alt=""></div>
+                                </div>                                
+                            </div>
 
+                        </carousel>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!--================ end Testimonial Area =================-->
 
         <!--================ Start Units Area =================-->
         <section class="home-blog-area">
@@ -517,8 +497,12 @@
 </template>
 
 <script>
+
+    import carousel from 'vue-owl-carousel'
+
     export default {
         name: 'Home',
+        components: { carousel },
         data () {
             return {
                 

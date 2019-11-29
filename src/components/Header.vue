@@ -65,16 +65,19 @@
                                 <div class="col-lg-12 pr-lg-0">
                                     <ul class="nav navbar-nav ml-auto justify-content-end">
                                         <li class="nav-item">
-                                            <a class="nav-link" @click="goTo('/')">Home</a>
+                                            <a class="nav-link" href="#wrapper-header" v-smooth-scroll>Home</a>
                                         </li>
                                         <li class="nav-item">
-                                            <a class="nav-link" @click="goTo('/company')">Empresa</a>
+                                            <a class="nav-link"  href="#toCompany" v-smooth-scroll>Empresa</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="#toService" v-smooth-scroll>Serviços</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="#toCR" v-smooth-scroll>Central de Relacionamento</a>
                                         </li>
                                         <li class="nav-item ">
                                             <a class="nav-link" href="#toMission" v-smooth-scroll>Missão</a>
-                                        </li>
-                                        <li class="nav-item">
-                                            <a class="nav-link" href="#toTec" v-smooth-scroll>Área de Atuação</a>
                                         </li>
                                         <li class="nav-item ">
                                             <a class="nav-link" href="#toUnits" v-smooth-scroll>Unidades</a>
@@ -87,17 +90,7 @@
                                                     <a class="nav-link" href="elements.html">Elements</a>
                                                 </li>
                                             </ul>
-                                        </li> -->
-                                        <li class="nav-item">
-                                            <a class="nav-link" href="#toInstall" v-smooth-scroll>Instalações</a>
-                                        </li>
-                                        <li class="nav-item">
-                                            <a class="nav-link" href="#toService" v-smooth-scroll>Serviços</a>
-                                        </li>
-                                        <li class="nav-item">
-                                            <a class="nav-link" href="#toCR" v-smooth-scroll>Central de Relacionamento</a>
-                                        </li>
-                                        
+                                        </li> -->                                       
                                     </ul>
                                 </div>
                             </div>
