@@ -86,6 +86,9 @@
         background: #f8f8f8;
     }
     .navbar {
+        .navbar-toggler{
+            border-color: transparent;
+        }
         padding: 0px;
         border: 0px;
         border-radius: 0px;
@@ -161,6 +164,7 @@
                             border: none;
                             padding: 0px;
                             border-radius: 0px;
+                            margin-left: 10px;
                         }
                         &:before {
                             content: "";

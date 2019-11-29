@@ -339,8 +339,9 @@
                             :dots="false" 
                             :loop="true" 
                             :nav="true"
-                            :autoplayTimeout="2500">
-                            
+                            :autoplayTimeout="2500"
+                            :navText="navText">
+
                             <div class="single_testi">
                                 <div>
                                 <h4>ÁREA DE ATUAÇÃO</h4>
@@ -505,7 +506,7 @@
         components: { carousel },
         data () {
             return {
-                
+                navText: ['<i class="fas fa-long-arrow-alt-left"></i>','<i class="fas fa-long-arrow-alt-right"></i>']
             }
         },
         methods: {

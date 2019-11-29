@@ -50,10 +50,10 @@
                 <nav class="navbar navbar-expand-lg w-100">
                     <div class="container">
                         <!-- Brand and toggle get grouped for better mobile display -->
-                        <a class="navbar-brand logo_h" href="index.html">
+                        <a class="navbar-brand logo_h" href="" v-smooth-scroll>
                             <img src="../assets/img/logo.png" alt="" />
                         </a>
-                        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                        <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
                             aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                             <span class="icon-bar"></span>
                             <span class="icon-bar"></span>
@@ -81,16 +81,7 @@
                                         </li>
                                         <li class="nav-item ">
                                             <a class="nav-link" href="#toUnits" v-smooth-scroll>Unidades</a>
-                                        </li>
-                                        <!-- <li class="nav-item submenu dropdown">
-                                            <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
-                                            aria-expanded="false">Pages</a>
-                                            <ul class="dropdown-menu">
-                                                <li class="nav-item">
-                                                    <a class="nav-link" href="elements.html">Elements</a>
-                                                </li>
-                                            </ul>
-                                        </li> -->                                       
+                                        </li>                                  
                                     </ul>
                                 </div>
                             </div>

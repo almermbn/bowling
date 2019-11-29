@@ -1,4 +1,4 @@
-@media All (max-width:1619px) {
+@media (max-width:1619px) {
     /* Main Menu Area css
 	============================================================================================ */
     .header_area .navbar .search {
@@ -89,6 +89,9 @@
         margin-top: 27px;
         margin-bottom: 23px;
     }
+    .logo_h {
+        margin-left: 10px;
+    }
 	.header_area .navbar {
 		background: #fff;
 	}
@@ -154,6 +157,7 @@
 	}
 	.header_area .navbar .nav .nav-item {
 		margin-right: 0px;
+        margin-left: 10px;
 	}
 	.header_area.navbar_fixed .main_menu .navbar .nav .nav-item .nav-link {
 		line-height: 40px;
