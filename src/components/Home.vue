@@ -270,7 +270,7 @@
                                     </p>
                                 </div>
                                 <div class="testi_author d-flex justify-content-center align-items-center">
-                                    <div class="thumb mr-4"><img src="..\assets\img\tecnologia.png" alt=""></div>
+                                    <div class="thumb mr-4"><img src="../assets/img/tecnologia.png" alt=""></div>
                                 </div>                                
                             </div>
                         </div>
@@ -505,7 +505,7 @@
                                 <h1>Conte Conosco!</h1>
                             </div>
                             <div class="">
-                                <a href="#toCR" class="main_btn">+Fale Conosco</a>
+                                <a href="#toCR" class="main_btn" v-smooth-scroll>+Fale Conosco</a>
                             </div>
                         </div>
                     </div>
