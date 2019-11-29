@@ -5,7 +5,7 @@ mongoose = require('mongoose'),
 bodyParser = require('body-parser');
 
 mongoose.Promise = global.Promise;
-mongoose.connect('mongodb://localhost:27017/maktub',  { useNewUrlParser: true, useUnifiedTopology: true  });
+mongoose.connect('mongodb://maktubAdmin:123test@ds157923.mlab.com:57923/heroku_r1pgdkc9',  { useNewUrlParser: true, useUnifiedTopology: true  });
 
 const db = mongoose.connection;
 
