@@ -25,7 +25,7 @@
         <!--================ End Home Banner Area =================-->
 
         <!--================ Feature Area =================-->
-        <section class="feature-area section_gap_top">
+        <section class="feature-area section_gap_top" id="toCompany">
             <div class="container">
                 <div class="row align-items-center justify-content-center">
                     <div class="col-lg-7">
@@ -73,7 +73,7 @@
                         </div>
                     </div>
 
-                    <div class="col-lg-5 offset-md-0 col-md-12 text-left section-title-wrap mt-4 mt-lg-0" id="toCompany">
+                    <div class="col-lg-5 offset-md-0 col-md-12 text-left section-title-wrap mt-4 mt-lg-0">
                         <h5>Quem Somos</h5>
                         <h2>
                             EXPRESSO MAKTUB
@@ -339,12 +339,78 @@
                             :dots="false" 
                             :loop="true" 
                             :nav="true"
-                            :autoplayTimeout="2500"
+                            :autoplayTimeout="8000"
                             :navText="navText">
 
+                            <!-- single testi -->
                             <div class="single_testi">
+                                <h2>POÍTICA DE QUALIDADE</h2>
                                 <div>
+                                    <p>
+                                    "Buscar a melhoria contínua na prestação de serviço de transporte de cargas,
+                                    alcançando a satisfação dos clientes.
+                                    concretizando sonhos. 
+                                    </p>
+                                </div>
+                                <div class="testi_author d-flex justify-content-center align-items-center">
+                                    <div class="thumb mr-4"><img src="../assets/img/testi-author.png" alt=""></div>
+                                    <div class="a-desc text-left">
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- single testi -->
+                            <div class="single_testi">
+                                <h2>MISSÃO</h2>
+                                <div>
+                                    <p>
+                                    "Prestar um serviço humanizado, com qualidade e segurança,
+                                    concretizando sonhos. 
+                                    </p>
+                                </div>
+                                <div class="testi_author d-flex justify-content-center align-items-center">
+                                    <div class="thumb mr-4"><img src="../assets/img/testi-author.png" alt=""></div>
+                                    <div class="a-desc text-left">
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- single testi -->
+                            <div class="single_testi">
+                                <h2>VISÃO</h2>
+                                <div>
+                                    <p>
+                                    "Ser reconhecida pela sociedade como uma transportadora moderna, útil e acessível, usando a tecnologia
+                                    e inovação nos serviços."
+                                    </p>
+                                </div>
+                                <div class="testi_author d-flex justify-content-center align-items-center">
+                                    <div class="thumb mr-4"><img src="../assets/img/testi-author.png" alt=""></div>
+                                    <div class="a-desc text-left">
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- single testi -->
+                            <div class="single_testi">
+                                <h2>VALORES</h2>
+                                <div>
+                                    <p>
+                                    Segurança: Ter o transporte de cargas como instrumento de segurança para nossos clientes.
+                                    Excelência: Oferecer um excelente atendimento, sendo agente de solução das necessidades dos
+                                    clientes, com qualidade e eficiência.
+                                    Ética: Agir com honestidade, respeito, integridade e transparência em todas asnossas açòes e relações.
+                                    Conhecimento: Ter profissionais capacitados e qualificados, propiciando um desenvolvimento contínuo.
+                                    Comprometimento: Ter pró-atividade, responsabilidade e comprometimento com o que se faz, envolvendo-se em projetos, objetivose metas, de forma a atingir os resultados esperados. 
+                                    </p>
+                                </div>
+                                <div class="testi_author d-flex justify-content-center align-items-center">
+                                    <div class="thumb mr-4"><img src="../assets/img/testi-author.png" alt=""></div>
+                                    <div class="a-desc text-left">
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- single testi -->
+                            <div class="single_testi">
                                 <h4>ÁREA DE ATUAÇÃO</h4>
+                                <div>
                                     <p>
                                         A Expresso MAKTUB é uma empresa sólida. Fundada em 1997 conta com profissionais qualificados e com ampla experiência
                                         em transporte de cargas.
@@ -356,38 +422,21 @@
                                 </div>
                                 <div class="testi_author d-flex justify-content-center align-items-center">
                                     <div class="thumb mr-4"><img src="../assets/img/testi-author.png" alt=""></div>
-                                </div>
-                            </div>
-                            <!-- single testi -->
-                            <div class="single_testi">
-                                <h4>MISSÃO</h4>
-                                <div>
-                                    <p>
-                                    "Somos especialistas em soluções de transporte.
-                                    Nosso foco é a execução de serviços expressos através
-                                    de pessoal qualificado seja no transporte de
-                                    transferência, distribuição ou logística"
-                                    </p>
-                                </div>
-                                <div class="testi_author d-flex justify-content-center align-items-center">
-                                    <div class="thumb mr-4"><img src="../assets/img/testi-author.png" alt=""></div>
                                     <div class="a-desc text-left">
                                     </div>
                                 </div>
-                            </div>
-                            <!-- single testi -->
+                            </div>                                
                             <div class="single_testi">
                                 <h4>TECNOLOGIA</h4>
                                 <div>
                                     <p>
-                                    Toda a frota é rastreada via satélite 24 horas e equipada com rádio de comunicação permitindo um
-                                    monitoramento preciso e em tempo real.
-                                    TODAS AS UNIDADES POSSUEM: 
-                                    <br>Circuito interno de CFTV | Empilhadeiras | 
-                                    | Gaiolas metálicas para melhor acomodação de cargas 
-                                    <br>VEÍCULOS:</br>
-                                    | Carretas Baú | Veículos Médios | Veículos Leves | VUC
+                                        Toda a frota é rastreada via satélite 24 horas e equipada com rádio de comunicação permitindo um
+                                        monitoramento preciso e em tempo real.
+                                        TODAS AS UNIDADES POSSUEM: 
                                     </p>
+                                    <p>Circuito interno de CFTV | Empilhadeiras | Gaiolas metálicas para melhor acomodação de cargas</p>
+                                    <p>VEÍCULOS:</p>
+                                    <p>Carretas Baú | Veículos Médios | Veículos Leves | VUC </p>
                                 </div>
                                 <div class="testi_author d-flex justify-content-center align-items-center">
                                     <div class="thumb mr-4"><img src="../assets/img/testi-author.png" alt=""></div>

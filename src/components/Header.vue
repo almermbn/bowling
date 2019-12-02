@@ -70,14 +70,14 @@
                                         <li class="nav-item">
                                             <a class="nav-link"  href="#toCompany" v-smooth-scroll>Empresa</a>
                                         </li>
+                                        <li class="nav-item ">
+                                            <a class="nav-link" href="#toMission" v-smooth-scroll>Missão</a>
+                                        </li>
                                         <li class="nav-item">
                                             <a class="nav-link" href="#toService" v-smooth-scroll>Serviços</a>
                                         </li>
                                         <li class="nav-item">
                                             <a class="nav-link" href="#toCR" v-smooth-scroll>Central de Relacionamento</a>
-                                        </li>
-                                        <li class="nav-item ">
-                                            <a class="nav-link" href="#toMission" v-smooth-scroll>Missão</a>
                                         </li>
                                         <li class="nav-item ">
                                             <a class="nav-link" href="#toUnits" v-smooth-scroll>Unidades</a>
