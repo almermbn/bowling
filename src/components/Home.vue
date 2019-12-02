@@ -282,7 +282,7 @@
                                             <div class="col-lg-4">
                                                 <div class="form-group">
                                                     <label for="firstName">Nome</label>
-                                                    <input type="text" class="form-control" id="firstName" aria-describedby="emailHelp" placeholder="Enter first name"
+                                                    <input type="text" class="form-control" id="firstName" aria-describedby="emailHelp" placeholder="Informe o Nome"
                                                     onfocus="this.placeholder = ''" onblur="this.placeholder = 'Informe Seu Nome'" />
                                                 </div>
                                             </div>
@@ -298,7 +298,7 @@
                                             <div class="col-lg-4">
                                                 <div class="form-group">
                                                     <label for="emailAddress">Email:</label>
-                                                    <input type="email" class="form-control" id="emailAddress" placeholder="Enter email address"
+                                                    <input type="email" class="form-control" id="emailAddress" placeholder="Informe o E-mail"
                                                     onfocus="this.placeholder = ''" onblur="this.placeholder = 'Informe seu e-mail'" />
                                                 </div>
                                             </div>
@@ -347,9 +347,8 @@
                                 <h2>POÍTICA DE QUALIDADE</h2>
                                 <div>
                                     <p>
-                                    "Buscar a melhoria contínua na prestação de serviço de transporte de cargas,
-                                    alcançando a satisfação dos clientes.
-                                    concretizando sonhos. 
+                                    <br>"Buscar a melhoria contínua na prestação de serviço de transporte de cargas,</br>
+                                    <br>alcançando a satisfação dos clientes."</br> 
                                     </p>
                                 </div>
                                 <div class="testi_author d-flex justify-content-center align-items-center">
@@ -363,8 +362,8 @@
                                 <h2>MISSÃO</h2>
                                 <div>
                                     <p>
-                                    "Prestar um serviço humanizado, com qualidade e segurança,
-                                    concretizando sonhos. 
+                                    <br>"Prestar um serviço humanizado, com qualidade e segurança,</br>
+                                    <br>concretizando sonhos".</br> 
                                     </p>
                                 </div>
                                 <div class="testi_author d-flex justify-content-center align-items-center">
@@ -378,8 +377,8 @@
                                 <h2>VISÃO</h2>
                                 <div>
                                     <p>
-                                    "Ser reconhecida pela sociedade como uma transportadora moderna, útil e acessível, usando a tecnologia
-                                    e inovação nos serviços."
+                                    <br>"Ser reconhecida pela sociedade como uma transportadora moderna, útil e acessível, usando a tecnologia</br>
+                                    <br>e inovação nos serviços."</br>
                                     </p>
                                 </div>
                                 <div class="testi_author d-flex justify-content-center align-items-center">
@@ -393,12 +392,12 @@
                                 <h2>VALORES</h2>
                                 <div>
                                     <p>
-                                    Segurança: Ter o transporte de cargas como instrumento de segurança para nossos clientes.
-                                    Excelência: Oferecer um excelente atendimento, sendo agente de solução das necessidades dos
+                                    <br>Segurança: Ter o transporte de cargas como instrumento de segurança para nossos clientes.
+                                    <br>Excelência: Oferecer um excelente atendimento, sendo agente de solução das necessidades dos
                                     clientes, com qualidade e eficiência.
-                                    Ética: Agir com honestidade, respeito, integridade e transparência em todas asnossas açòes e relações.
-                                    Conhecimento: Ter profissionais capacitados e qualificados, propiciando um desenvolvimento contínuo.
-                                    Comprometimento: Ter pró-atividade, responsabilidade e comprometimento com o que se faz, envolvendo-se em projetos, objetivose metas, de forma a atingir os resultados esperados. 
+                                    <br>Ética: Agir com honestidade, respeito, integridade e transparência em todas asnossas açòes e relações.
+                                    <br>Conhecimento: Ter profissionais capacitados e qualificados, propiciando um desenvolvimento contínuo.
+                                    <br>Comprometimento: Ter pró-atividade, responsabilidade e comprometimento com o que se faz, envolvendo-se em projetos, objetivose metas, de forma a atingir os resultados esperados. 
                                     </p>
                                 </div>
                                 <div class="testi_author d-flex justify-content-center align-items-center">
@@ -409,7 +408,7 @@
                             </div>
                             <!-- single testi -->
                             <div class="single_testi">
-                                <h4>ÁREA DE ATUAÇÃO</h4>
+                                <h2>ÁREA DE ATUAÇÃO</h2>
                                 <div>
                                     <p>
                                         A Expresso MAKTUB é uma empresa sólida. Fundada em 1997 conta com profissionais qualificados e com ampla experiência
@@ -427,7 +426,7 @@
                                 </div>
                             </div>                                
                             <div class="single_testi">
-                                <h4>TECNOLOGIA</h4>
+                                <h2>TECNOLOGIA</h2>
                                 <div>
                                     <p>
                                         Toda a frota é rastreada via satélite 24 horas e equipada com rádio de comunicação permitindo um
