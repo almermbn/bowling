@@ -25,7 +25,7 @@ Vue.use(vueSmoothScroll)
 
 
 Vue.config.productionTip = false;
-Vue.prototype.$remoteUrl = "https://drbowling.herokuapp.com/";
+Vue.prototype.$remoteUrl = "https://maktubweb.herokuapp.com/";
 
 
 /* eslint-disable no-new */
