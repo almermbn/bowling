@@ -25,7 +25,7 @@ Vue.use(vueSmoothScroll)
 
 
 Vue.config.productionTip = false;
-Vue.prototype.$remoteUrl = "http://happy-hugle-0b0ab8.netlify.com";
+Vue.prototype.$remoteUrl = "https://drbowling.herokuapp.com/";
 
 
 /* eslint-disable no-new */
