@@ -21,6 +21,7 @@
     "highcharts-vue": "^1.2.0",
     "mongoose": "^5.3.10",
     "node-sass": "^4.12.0",
+    "nodemailer": "^6.4.1",
     "sass-loader": "^7.1.0",
     "v-money": "^0.8.1",
     "vue": "^2.6.10",

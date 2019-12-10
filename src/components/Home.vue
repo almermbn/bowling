@@ -267,7 +267,7 @@
                 <div class="row justify-content-between align-items-center">
                     <div class="col-lg-12">
                         <div class="estimated-cost">
-                            <form class="form-wrap" action="#">
+                            <form class="form-wrap">
                                 <nav>
                                     <div class="nav nav-tabs justify-content-md-start justify-content-center" id="nav-tab" role="tablist">
                                         <a class="nav-item nav-link active" id="nav-getEstimation-tab" data-toggle="tab" href="#nav-getEstimation"
@@ -282,7 +282,7 @@
                                             <div class="col-lg-4">
                                                 <div class="form-group">
                                                     <label for="firstName">Nome</label>
-                                                    <input type="text" class="form-control" id="firstName" aria-describedby="emailHelp" placeholder="Informe o Nome"
+                                                    <input type="text" v-model="name" class="form-control" id="firstName" aria-describedby="emailHelp" placeholder="Informe o Nome"
                                                     onfocus="this.placeholder = ''" onblur="this.placeholder = 'Informe Seu Nome'" />
                                                 </div>
                                             </div>
@@ -290,7 +290,7 @@
                                             <div class="col-lg-4">
                                                 <div class="form-group">
                                                     <label for="lastName">Sobrenome</label>
-                                                    <input type="text" class="form-control" id="lastName" placeholder="Enter last name" onfocus="this.placeholder = ''"
+                                                    <input type="text" v-model="lastName" class="form-control" id="lastName" placeholder="Enter last name" onfocus="this.placeholder = ''"
                                                     onblur="this.placeholder = 'Informe o Sobrenome'" />
                                                 </div>
                                             </div>
@@ -298,7 +298,7 @@
                                             <div class="col-lg-4">
                                                 <div class="form-group">
                                                     <label for="emailAddress">Email:</label>
-                                                    <input type="email" class="form-control" id="emailAddress" placeholder="Informe o E-mail"
+                                                    <input type="email" v-model="email" class="form-control" id="emailAddress" placeholder="Informe o E-mail"
                                                     onfocus="this.placeholder = ''" onblur="this.placeholder = 'Informe seu e-mail'" />
                                                 </div>
                                             </div>
@@ -306,7 +306,7 @@
                                             <div class="col-lg-4">
                                                 <div class="form-group">
                                                     <label for="cargoType">Dúvida/Comentário</label>
-                                                    <input type="text" class="form-control" id="cargoType" placeholder="Dúvidas/Comentários" onfocus="this.placeholder = ''"
+                                                    <input type="text" v-model="description" class="form-control" id="cargoType" placeholder="Dúvidas/Comentários" onfocus="this.placeholder = ''"
                                                     onblur="this.placeholder = 'Deixe aqui sua Dúvida/Comentário'" />
                                                 </div>
                                             </div>
@@ -314,7 +314,7 @@
 
                                             <div class="col-lg-12 mt-4">
                                                 <div class="text-center confirm_btn_box">
-                                                    <button class="main_btn text-uppercase">Enviar Mensagem </button>
+                                                    <button type="button" class="main_btn text-uppercase" @click="sendEmail">Enviar Mensagem </button>
                                                 </div>
                                             </div>
                                         </div>
@@ -554,11 +554,39 @@
         components: { carousel },
         data () {
             return {
-                navText: ['<i class="fas fa-long-arrow-alt-left"></i>','<i class="fas fa-long-arrow-alt-right"></i>']
+                navText: ['<i class="fas fa-long-arrow-alt-left"></i>','<i class="fas fa-long-arrow-alt-right"></i>'],
+                name: '',
+                lastName: '',
+                email: '',
+                description: '',
+                reg: /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,24}))$/
             }
         },
         methods: {
-            
+            sendEmail(){
+
+                var data = {
+                    name: this.name,
+                    lastName: this.lastName,
+                    email: this.email,
+                    description: this.description,
+                }
+
+                if(this.name && this.lastName && this.isEmailValid() && this.description){
+
+                    this.$http.post(this.$remoteUrl + 'api/sendEmail', data).then(response => {
+                        var result = response.data;
+                        alert(result.message);
+                    },function (response) {
+                        console.log(response);
+                    });
+                } else {
+                    alert('Favor preencher os campos corretamente');
+                }               
+            },
+            isEmailValid: function() {
+                return this.email == "" ? false : this.reg.test(this.email) ? true : false;
+            }
         }
     }
 </script>
