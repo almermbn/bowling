@@ -565,6 +565,8 @@
         methods: {
             sendEmail(){
 
+                var vm = this;
+
                 var data = {
                     name: this.name,
                     lastName: this.lastName,
@@ -577,12 +579,22 @@
                     this.$http.post(this.$remoteUrl + 'api/sendEmail', data).then(response => {
                         var result = response.data;
                         alert(result.message);
+
+                        vm.clearForm();                        
                     },function (response) {
+                        alert('Houve um erro ao enviar email. Favor tentar mais tarde.')
                         console.log(response);
+                        vm.clearForm();
                     });
                 } else {
                     alert('Favor preencher os campos corretamente');
-                }               
+                }
+            },
+            clearForm(){
+                this.name = '';
+                this.lastName = '';
+                this.email = '';
+                this.description = '';
             },
             isEmailValid: function() {
                 return this.email == "" ? false : this.reg.test(this.email) ? true : false;
