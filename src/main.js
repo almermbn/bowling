@@ -11,7 +11,7 @@ import GSignInButton from 'vue-google-signin-button'
 import Money from 'v-money'
 import BootstrapVue from 'bootstrap-vue'
 import vueSmoothScroll from 'vue2-smooth-scroll'
-
+import VueTheMask from 'vue-the-mask'
 
 
 
@@ -22,6 +22,7 @@ Vue.use(HighchartsVue)
 Vue.use(VueAnimateNumber)
 Vue.use(BootstrapVue)
 Vue.use(vueSmoothScroll)
+Vue.use(VueTheMask)
 
 
 Vue.config.productionTip = false;

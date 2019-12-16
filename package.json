@@ -31,6 +31,7 @@
     "vue-owl-carousel": "^2.0.3",
     "vue-resource": "^1.5.1",
     "vue-router": "^3.0.1",
+    "vue-the-mask": "^0.11.1",
     "vue2-google-maps": "^0.10.3",
     "vue2-smooth-scroll": "^1.1.1"
   },

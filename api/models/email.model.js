@@ -14,6 +14,12 @@ var emailSchma = new Email({
 	description: {
 	    type: String
 	},
+	company: {
+	    type: String
+	},
+	phone: {
+	    type: String
+	}
 	
 });
 module.exports = mongoose.model('Email', emailSchma);

@@ -21,11 +21,19 @@ exports.send_email = function(req, res) {
         }
     });
 
+    var subject = 'Contato: ' + eventModel.name + ' ' + eventModel.lastName;
+    eventModel.company ? subject += ' - ' + eventModel.company : subject;
+
+    var header = '<p><b>Nome: ' + eventModel.name + ' ' + eventModel.lastName + '</b></p>';
+    var subheader = '<p><b>Telefone: ' + eventModel.phone + '</b></p>';
+    var body = '<p>' + eventModel.description + '</p>';
+    var contentWrapper = header + subheader + body;
+
     var mailOptions = {
         from: 'expressomaktub2019@gmail.com',
-        to: eventModel.email,
-        subject: 'Contato: ' + eventModel.name + ' ' + eventModel.lastName,
-        text: eventModel.description
+        to: 'expressomaktub2019@gmail.com', //change to manager mail
+        subject: subject,
+        html: contentWrapper
     };
 
     transporter.sendMail(mailOptions, function(error, info){
