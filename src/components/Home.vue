@@ -47,17 +47,7 @@
                                     <p>
                                         EM BREVE - Tire suas dúvidas com nossa equipe especializada.
                                     </p>
-                                    <a href="#">Contact Us</a>
-                                </div>
-                            </div>
-                            <div class="col-lg-6 col-md-6">
-                                <div class="single-feature">
-                                    <img src="../assets/img/feature/f3.png" alt="">
-                                    <h4>Get a Quote</h4>
-                                    <p>
-                                        The French Revolutioncons tituted for the conscience of the dominant the French Revolutioncons.
-                                    </p>
-                                    <a href="#">Start a quote</a>
+                                    <a href="#toCR" v-smooth-scroll>Entre e contato</a>
                                 </div>
                             </div>
                             <div class="col-lg-6 col-md-6">
@@ -267,7 +257,7 @@
                 <div class="row justify-content-between align-items-center">
                     <div class="col-lg-12">
                         <div class="estimated-cost">
-                            <form class="form-wrap" action="#">
+                            <form class="form-wrap">
                                 <nav>
                                     <div class="nav nav-tabs justify-content-md-start justify-content-center" id="nav-tab" role="tablist">
                                         <a class="nav-item nav-link active" id="nav-getEstimation-tab" data-toggle="tab" href="#nav-getEstimation"
@@ -282,7 +272,7 @@
                                             <div class="col-lg-4">
                                                 <div class="form-group">
                                                     <label for="firstName">Nome</label>
-                                                    <input type="text" class="form-control" id="firstName" aria-describedby="emailHelp" placeholder="Informe o Nome"
+                                                    <input type="text" v-model="name" class="form-control" id="firstName" aria-describedby="emailHelp" placeholder="Informe o Nome"
                                                     onfocus="this.placeholder = ''" onblur="this.placeholder = 'Informe Seu Nome'" />
                                                 </div>
                                             </div>
@@ -290,7 +280,7 @@
                                             <div class="col-lg-4">
                                                 <div class="form-group">
                                                     <label for="lastName">Sobrenome</label>
-                                                    <input type="text" class="form-control" id="lastName" placeholder="Enter last name" onfocus="this.placeholder = ''"
+                                                    <input type="text" v-model="lastName" class="form-control" id="lastName" placeholder="Informe o Sobrenome" onfocus="this.placeholder = ''"
                                                     onblur="this.placeholder = 'Informe o Sobrenome'" />
                                                 </div>
                                             </div>
@@ -298,23 +288,39 @@
                                             <div class="col-lg-4">
                                                 <div class="form-group">
                                                     <label for="emailAddress">Email:</label>
-                                                    <input type="email" class="form-control" id="emailAddress" placeholder="Informe o E-mail"
+                                                    <input type="email" v-model="email" class="form-control" id="emailAddress" placeholder="Informe o E-mail"
                                                     onfocus="this.placeholder = ''" onblur="this.placeholder = 'Informe seu e-mail'" />
                                                 </div>
                                             </div>
 
                                             <div class="col-lg-4">
                                                 <div class="form-group">
-                                                    <label for="cargoType">Dúvida/Comentário</label>
-                                                    <input type="text" class="form-control" id="cargoType" placeholder="Dúvidas/Comentários" onfocus="this.placeholder = ''"
-                                                    onblur="this.placeholder = 'Deixe aqui sua Dúvida/Comentário'" />
+                                                    <label for="phone">Telefone</label>
+                                                    <the-mask :masked="true" :mask="['(##) ####-####', '(##) #####-####']" v-model="phone" id="phone" class="form-control" placeholder="Informe um telefone de contato" onfocus="this.placeholder = ''"
+                                                    onblur="this.placeholder = 'Informe um telefone de contato'"/>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-lg-4">
+                                                <div class="form-group">
+                                                    <label for="company">Empresa</label>
+                                                    <input type="text" v-model="company" class="form-control" id="company" placeholder="Informe o nome da empresa caso possua" onfocus="this.placeholder = ''"
+                                                    onblur="this.placeholder = 'Informe o nome da empresa caso possua'" />
+                                                </div>
+                                            </div>
+
+                                            <div class="col-lg-4">
+                                                <div class="form-group">
+                                                    <label for="description">Dúvida/Comentário</label>
+                                                    <textarea type="text" v-model="description" class="form-control" id="description" placeholder="Dúvidas/Comentários" onfocus="this.placeholder = ''"
+                                                    onblur="this.placeholder = 'Deixe aqui sua Dúvida/Comentário'"></textarea>
                                                 </div>
                                             </div>
 
 
                                             <div class="col-lg-12 mt-4">
                                                 <div class="text-center confirm_btn_box">
-                                                    <button class="main_btn text-uppercase">Enviar Mensagem </button>
+                                                    <button type="button" class="main_btn text-uppercase" @click="sendEmail" :disabled="mailControl">Enviar Mensagem </button>
                                                 </div>
                                             </div>
                                         </div>
@@ -554,11 +560,71 @@
         components: { carousel },
         data () {
             return {
-                navText: ['<i class="fas fa-long-arrow-alt-left"></i>','<i class="fas fa-long-arrow-alt-right"></i>']
+                navText: ['<i class="fas fa-long-arrow-alt-left"></i>','<i class="fas fa-long-arrow-alt-right"></i>'],
+                name: '',
+                mailControl: false,
+                lastName: '',
+                email: '',
+                description: '',
+                phone: '',
+                company: '',
+                reg: /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,24}))$/
             }
         },
         methods: {
-            
+            sendEmail(){
+
+                var vm = this;
+
+                var data = {
+                    name: this.name,
+                    lastName: this.lastName,
+                    email: this.email,
+                    description: this.description,
+                    phone: this.phone,
+                    company: this.company,
+                }
+
+                if(this.phone.length != 0 && this.phone.length <= 14){
+                    alert('Favor preencher os campos corretamente');
+
+                    return false;
+                }
+
+                if(this.name && this.lastName && this.isEmailValid() && this.description){
+
+                    this.mailControl = true;
+                    this.$http.post(this.$remoteUrl + 'api/sendEmail', data).then(response => {
+                        var result = response.data;
+                        alert(result.message);
+                        vm.clearForm();       
+
+                        setTimeout(function() {
+                            vm.mailControl = false;
+                        }, 30000);
+
+                    },function (response) {
+                        alert('Houve um erro ao enviar email. Favor tentar mais tarde.')
+                        console.log(response);
+                        vm.clearForm();
+                    });
+
+                    
+                } else {
+                    alert('Favor preencher os campos corretamente');
+                }
+            },
+            clearForm(){
+                this.name = '';
+                this.lastName = '';
+                this.email = '';
+                this.description = '';
+                this.phone = '';
+                this.company = '';
+            },
+            isEmailValid: function() {
+                return this.email == "" ? false : this.reg.test(this.email) ? true : false;
+            }
         }
     }
 </script>
