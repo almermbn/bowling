@@ -7,15 +7,6 @@
                     <div class="row">
                         <div class="col-lg-7">
                             <div class="banner_content d-flex flex-md-row flex-column">
-                                <div class="banner-left text-md-right">
-                                    <h1 class="text-uppercase"> EXPRESSO MAKTUB </h1>
-                                </div>
-                                <div class="banner-right position-relative">
-                                    <p>
-                                        Transportando com segurança por todo o Brasil!
-                                    </p>
-                                    <a class="main_btn mt-md-0 mt-4">Explore More</a>
-                                </div>
                             </div>
                         </div>
                     </div>
@@ -98,7 +89,7 @@
                             <div class="col-lg-12">
                                 <h5>Sobre a Expresso MAKTUB</h5>
                                 <h2>
-                                    Algumas estatísticas de nossos serviços prestados.
+                                    Algumas estatísticas e parceiros de nossos serviços prestados .
                                 </h2>
                             </div>
                         </div>
@@ -350,7 +341,7 @@
 
                             <!-- single testi -->
                             <div class="single_testi">
-                                <h2>POÍTICA DE QUALIDADE</h2>
+                                <h2>POLÍTICA DE QUALIDADE</h2>
                                 <div>
                                     <p>
                                     <br>"Buscar a melhoria contínua na prestação de serviço de transporte de cargas,</br>
