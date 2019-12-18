@@ -39,6 +39,9 @@
                         <div class="footer-social d-flex align-items-center">
                             <a href="#"><i class="fab fa-facebook"></i></a>
                             <a href="#"><i class="fab fa-twitter"></i></a>
+                            <p>
+                            MATRIZ - Rua Leiria, 120 - Bairro São Francisco - Belo Horizonte - MG.
+                            </p>
                         </div>
                     </div>
                 </div>

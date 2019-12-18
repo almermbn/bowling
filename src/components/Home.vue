@@ -1,4 +1,4 @@
-<template>
+6<template>
     <div id="wrapper-home">
         <!--================ Home Banner Area =================-->
         <section class="home_banner_area">
@@ -73,7 +73,6 @@
 
 						Nossa equipe, tecnologia, experiência e recursos se conectam para cumprir em tempo nossa missão, para que nossos clientes possam se sentir tranquilos de que seus produtos serão transportados de forma ótima e segura ao seu destino.
                         </p>
-                        <a href="#" class="main_btn">+Leia Mais - Quem Somos</a>
                     </div>
                 </div>
             </div>
