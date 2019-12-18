@@ -39,10 +39,15 @@
                         <div class="footer-social d-flex align-items-center">
                             <a href="#"><i class="fab fa-facebook"></i></a>
                             <a href="#"><i class="fab fa-twitter"></i></a>
-                            <p>
-                            MATRIZ - Rua Leiria, 120 - Bairro São Francisco - Belo Horizonte - MG.
-                            </p>
                         </div>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-6 col-sm-6 social-widget">
+                    <div class="single-footer-widget">
+                        <h6>Matriz</h6>
+                        <p>
+                            Rua Leiria, 120 - Bairro São Francisco - Belo Horizonte - MG.
+                        </p>
                     </div>
                 </div>
             </div>
