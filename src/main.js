@@ -24,9 +24,8 @@ Vue.use(BootstrapVue)
 Vue.use(vueSmoothScroll)
 Vue.use(VueTheMask)
 
-
 Vue.config.productionTip = false;
-Vue.prototype.$remoteUrl = "https://maktubweb.herokuapp.com/";
+Vue.prototype.$remoteUrl = "https://expressomaktub.com/";
 
 
 /* eslint-disable no-new */
