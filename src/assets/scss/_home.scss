@@ -590,7 +590,7 @@
         padding: 54px 15px;
     }
     h1 {
-        color: #ffffff;
+        color: #000;
         font-size: 42px;
         font-weight: 400;
         text-transform: uppercase;
@@ -600,7 +600,7 @@
         }
     }
     p {
-        color: #ffffff;
+        color: #2d3b7a;
         font-size: 12px;
         text-transform: uppercase;
         letter-spacing: 1px;
@@ -608,7 +608,7 @@
     }
     .main_btn {
         background: #ffffff;
-        color: $title-color;
+        color: #2d3b7a;
         &:before {
             background: #ffffff;
         }
@@ -617,9 +617,9 @@
             border-bottom: 10px solid $primary-color;
         }
         &:hover {
-            color: #ffffff;
+            color: #fff;
             &:before {
-                background: $primary-color;
+                background: #2d3b7a;
             }
             &:after {
                 border-right: 10px solid #ffffff;

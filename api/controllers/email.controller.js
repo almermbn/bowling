@@ -18,6 +18,10 @@ exports.send_email = function(req, res) {
         auth: {
             user: 'expressomaktub2019@gmail.com',
             pass: 'maktub2019'
+        },
+        secure: false,
+        tls: {
+            rejectUnauthorized: false
         }
     });
 
@@ -31,12 +35,27 @@ exports.send_email = function(req, res) {
 
     var mailOptions = {
         from: 'expressomaktub2019@gmail.com',
-        to: 'expressomaktub2019@gmail.com', //change to manager mail
+        to: 'comercialbhz@expressomaktub.com.br',
         subject: subject,
         html: contentWrapper
     };
 
     transporter.sendMail(mailOptions, function(error, info){
+        if (error) {
+            console.log(error);
+        } else {
+            console.log('Email sent: ' + info.response);
+        }
+    });
+
+    var mailOptions2 = {
+        from: 'expressomaktub2019@gmail.com',
+        to: 'atendimentobhz@expressomaktub.com.br',
+        subject: subject,
+        html: contentWrapper
+    };
+
+    transporter.sendMail(mailOptions2, function(error, info){
         if (error) {
             console.log(error);
         } else {

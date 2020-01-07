@@ -1,22 +1,22 @@
 var express = require('express'),
 app = express(),
-port = process.env.PORT || 3000,
-mongoose = require('mongoose'),
+port = process.env.PORT || 21195,
+//mongoose = require('mongoose'),
 email = require('./api/models/email.model'),
 bodyParser = require('body-parser');
 
-mongoose.Promise = global.Promise;
-mongoose.connect('mongodb://localhost/maktub',  { useNewUrlParser: true, useUnifiedTopology: true  });
+//mongoose.Promise = global.Promise;
+//mongoose.connect('mongodb://localhost/maktub',  { useNewUrlParser: true, useUnifiedTopology: true  });
 //mongoose.connect('mongodb://maktubAdmin:123test@ds157923.mlab.com:57923/heroku_r1pgdkc9',  { useNewUrlParser: true, useUnifiedTopology: true  });
 
-const db = mongoose.connection;
+// const db = mongoose.connection;
 
-db.on('error', err => {
-  console.error(`Error while connecting to DB: ${err.message}`);
-});
-db.once('open', () => {
-  console.log('DB connected successfully!');
-});
+// db.on('error', err => {
+//   console.error(`Error while connecting to DB: ${err.message}`);
+// });
+// db.once('open', () => {
+//   console.log('DB connected successfully!');
+// });
 
 app.use((req, res, next) => {
 	res.header('Access-Control-Allow-Origin', '*');

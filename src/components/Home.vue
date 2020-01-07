@@ -121,24 +121,23 @@
                     <div class="offset-lg-1 col-lg-4">
                         <div class="about_box">
                             <div class="activity">
-                                <div class="row">
-                                    <div class="col-lg-6 col-md-3 col-6">
-                                        <div class="activity_box">
-                                            <div>
-                                                <img src="../assets/img/about/i1.png" alt="">
-                                            </div>
-                                            <h3><span class="counter">2500</span>+</h3>
-                                            <p>Pacotes Entregues</p>
-                                        </div>
-                                    </div>
-
+                                <div class="row">   
                                     <div class="col-lg-6 col-md-3 col-6">
                                         <div class="activity_box">
                                             <div>
                                                 <img src="../assets/img/about/i2.png" alt="">
                                             </div>
-                                            <h3><span class="counter">500</span>+</h3>
+                                            <h3><span class="counter">900</span>+</h3>
                                             <p>Clientes Satisfeitos com Nossos Serviços Prestados</p>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6 col-md-3 col-6">
+                                        <div class="activity_box">
+                                            <div>
+                                                <img src="../assets/img/about/i1.png" alt="">
+                                            </div>
+                                            <h3><span class="counter">1.200.000</span>+</h3>
+                                            <p>Pacotes Entregues</p>
                                         </div>
                                     </div>
                                     <div class="col-lg-6 col-md-3 col-6">
@@ -155,7 +154,7 @@
                                             <div>
                                                 <img src="../assets/img/about/i4.png" alt="">
                                             </div>
-                                            <h3 class="counter">5000</h3>
+                                            <h3 class="counter">240.000+</h3>
                                             <p>Toneladas de Mercadorias Entregues</p>
                                         </div>
                                     </div>
@@ -391,9 +390,9 @@
                                     <br>Segurança: Ter o transporte de cargas como instrumento de segurança para nossos clientes.
                                     <br>Excelência: Oferecer um excelente atendimento, sendo agente de solução das necessidades dos
                                     clientes, com qualidade e eficiência.
-                                    <br>Ética: Agir com honestidade, respeito, integridade e transparência em todas asnossas açòes e relações.
+                                    <br>Ética: Agir com honestidade, respeito, integridade e transparência em todas as nossas ações e relações.
                                     <br>Conhecimento: Ter profissionais capacitados e qualificados, propiciando um desenvolvimento contínuo.
-                                    <br>Comprometimento: Ter pró-atividade, responsabilidade e comprometimento com o que se faz, envolvendo-se em projetos, objetivose metas, de forma a atingir os resultados esperados. 
+                                    <br>Comprometimento: Ter pró-atividade, responsabilidade e comprometimento com o que se faz, envolvendo-se em projetos, objetivos e metas, de forma a atingir os resultados esperados. 
                                     </p>
                                 </div>
                                 <div class="testi_author d-flex justify-content-center align-items-center">
@@ -591,12 +590,13 @@
 
                         setTimeout(function() {
                             vm.mailControl = false;
-                        }, 30000);
+                        }, 15000);
 
                     },function (response) {
                         alert('Houve um erro ao enviar email. Favor tentar mais tarde.')
                         console.log(response);
                         vm.clearForm();
+                        vm.mailControl = false;
                     });
 
                     
